@@ -1,0 +1,45 @@
+////////////////////////////////////////////////////////////////////////////////
+
+Notas:
+
+* La plantilla funciona de menera dinamica combinando elementos de jquery y ajax.
+
+* La plantilla del login y la del index son dos diferentes
+
+* Se debe de cambiar las variables de conexion de la base de datos ubicadas en
+  el archivo con.php
+
+Funcionamiento de la plantilla de index.php ( no confundir con index.html )
+
+La plantilla de index esta compuesta por un encabezado dinamico head.php el cual 
+contiene el codigo la barra navegacion y los componentes de timeout.php el cual
+verifica si la seccion ha caducado y emvia el usuario a la pantalla de login, el
+otro componente es check_session.php el cual verifica si correspondientemente se
+han creado las variables de creacion. (Es recomendable tambien colocar todos los
+links de css en esta parte)
+
+El segundo componente de la plantilla es el footer ubicado en la parte de abajo
+footer.php en donde estan contenidas todas las funciones globales de javascript
+( es recomendable escribir todos los links de archivos js en esta parte)
+
+El ultimo elemento es la divicion con id div_contenido donde estara contenido
+el cuerpo de la pagina y se cargara dinamicamente con el llamado a la funcion
+ajax_(str), la cual tomara el string donde esta ubicado el archivo php a cargar
+ejemplo: ajax_(home.php);
+
+Funcionamiento de la plantilla home.php
+
+Esta plantilla es el contenido que se proporcionara dinamicamente a la division 
+dentro de la plantilla index.( todas las demas plantillas deben de comenzar 
+con el codigo php ubicado al principio de head.php )
+
+En esta plantilla se encuentra la referencia al componente del navbar donde
+estan ubicados todos los links que hacia los modulos, este proceso se lleva
+de forma dinamica y carga la divicion con el contenido.
+
+El resto del contenido puede ser de tipo html o cargar de forma dinamica con
+php, pero se debe de tomar en cuenta que se la plantilla html debe de comenzar
+con una divicion con la clase container-fluid la cual contendra todo el contenido
+antes mencionado
+
+consultas: hmax_32@yahoo.com
