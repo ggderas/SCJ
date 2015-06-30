@@ -1,7 +1,7 @@
 ## Primeros pasos
 
 1. Clonar repositorio en su escritorio
-2. Configurar servicios Apache y MySQL con respecto a las credenciales
+2. Configurar servicios  Apache y MySQL de manera local con respecto a las credenciales
 
 ## Credenciales
 
