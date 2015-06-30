@@ -61,7 +61,7 @@ if(isset( $_SESSION['user_id'] ))
 <!--login modal-->
       <div id="login-page">
         <div class="container">
-          <form class="form-login">
+          <form class="form-login" action = "login_submit.php" method = "" >
             <h2 class="form-login-heading">Inicio de sesión sistema de Ciencias Jurídicas</h2>
               <div class="login-wrap">
 
@@ -137,7 +137,7 @@ if(isset( $_SESSION['user_id'] ))
                     </span>
                 </label>
 				-->
-                <input type="button" class="btn btn-primary btn-lg btn-block" value="Acceder" onclick="login();">
+                <input type="submit" class="btn btn-primary btn-lg btn-block" value="Acceder" onclick="login();">
                    </input>
                 <hr>
               </div>
