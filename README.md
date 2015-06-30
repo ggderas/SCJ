@@ -5,10 +5,10 @@
 
 ## Credenciales
 
- $host = 'localhost';
- $dbname = 'sistema_ciencias_juridicas';
- $username = 'root';
- $password = '';
+1. $host = 'localhost';
+2. $dbname = 'sistema_ciencias_juridicas';
+3. $username = 'root';
+4. $password = '';
 
 ## Dinámica de ramas
 
