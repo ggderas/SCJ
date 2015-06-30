@@ -5,10 +5,10 @@
 
 ## Credenciales
 
-1. Apache -> Puerto 80
-2. Nombre de base de datos -> 
-3. Nombre de usuario ->
-4. Clave ->
+ $host = 'localhost';
+ $dbname = 'sistema_ciencias_juridicas';
+ $username = 'root';
+ $password = '';
 
 ## Dinámica de ramas
 
