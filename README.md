@@ -2,10 +2,13 @@
 
 1. Clonar repositorio en su escritorio
 2. Configurar servicios Apache y MySQL con respecto a las credenciales
-  Apache -> Puerto 80
-  Nombre de base de datos ->
-  Nombre de usuario ->
-  Clave ->
+
+## Credenciales
+
+1. Apache -> Puerto 80
+2. Nombre de base de datos -> 
+3. Nombre de usuario ->
+4. Clave ->
 
 ## Dinámica de ramas
 
