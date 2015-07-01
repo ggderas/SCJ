@@ -100,6 +100,7 @@ $maindir = "../../";
 
             function llegadaInsertarDepartamento()
             {
+                // Datos enviados por JASON
                 $("#contenedor").load('pages/recursos_humanos/Departamentos.php', data);
                 //$("#contenedor").load('../cargarPOAs.php');
             }
