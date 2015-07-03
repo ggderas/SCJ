@@ -34,7 +34,7 @@ if(!isset( $_SESSION['user_id'] ))
         <div class="row">
             <div class="col-sm-3">
                 <ul class="list-unstyled">
-                   <li  class="nav-header active"> <a id="SecretariAcademica" href="#"><i class="glyphicon glyphicon-home"></i> Inicio Secretaria Academica</a></li>
+                   <li  class="nav-header active"> <a id="SecretariaAcademica" href="#"><i class="glyphicon glyphicon-home"></i> Inicio Secretaria Academica</a></li>
                    <hr>
                    <li class="nav-header"> <a href="#" data-toggle="collapse" data-target="#userMenu">
                      <h5><i class="fa fa-male fa-fw"></i>Gestión de Estudiantes<i class="glyphicon glyphicon-chevron-down"></i></h5>
@@ -64,16 +64,10 @@ if(!isset( $_SESSION['user_id'] ))
             </div>
 
              <div class="col-sm-9">
-              <div class="col-md-12">
+                <h1 class="page-header"><strong>Secretaría Académica</strong></h1>
                 <div id="contenedor" class="content-panel">
-                  <div class="col-lg-12">
-                    
-                  </div>
-                  <div id="wrapper">
-                   <!-- Patanlla principal de la secretaria academica -->
-                  </div>                       
+                              
                 </div>
-              </div>
             </div>
         </div>
       </div>

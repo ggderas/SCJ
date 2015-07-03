@@ -6,38 +6,43 @@
 
   $(document).ready(function(){
 
-    $("#SecrerariaAcademica").click(function(event) {
+    $("#SecretariaAcademica").click(function(event) {
       event.preventDefault();
+      alert("entro");
           
       $("#div_contenido").load("pages/SecrerariaAcademica/SecrerariaAcademica.php");
       });
     $("#RegistroEstudiante").click(function(event) {
+
       event.preventDefault();
+      alert("Entro");
           
       $("#contenedor" ).load( //Pantalla para ingresar un estudiante
                             );
       }); 
     $("#TipoEstudiante").click(function(event) {
       event.preventDefault();
-          
-      $("#contenedor" ).load( // Pantalla para modificar el tipo de estudiante
-                            );
+      
+      $("#contenedor").load( "pages/SecretariaAcademica/tipoEstudiante.php");
       }); 
 
     $("#nuevaSolicitud").click(function(event) {
       event.preventDefault();
+      alert("Entro");
       $("#contenedor").load(// Pantalla para ingresar una nueva solicitud
                             );
       });
 
     $("#SolicitudEstudiante").click(function(event) {
       event.preventDefault();
+      alert("Entro");
       $("#contenedor").load(// Pantalla para ingresar una solicitud por estudiante
                             );
       }); 
 
     $("#BusquedaAvanzada").click(function(event) {
       event.preventDefault();
+      alert("Entro");
       $("#contenedor").load(// Pantalla para Hacer una busqueda avanzada
                             );
       });   
