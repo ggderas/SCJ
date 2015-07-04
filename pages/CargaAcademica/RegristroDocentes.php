@@ -51,15 +51,15 @@
                                                 <div class="form-group">
                                                     <label class="col-sm-5 control-label"><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>Titulo</label>
 
-                                                    <div class="col-sm-7"><input id="titulo" class="form-control" name="titulo">Titulo</div>
+                                                    <div class="col-sm-7"><input id="titulo" class="form-control" name="titulo"></div>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label class="col-sm-5 control-label"><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>Titulo</label>
-                                                    <div class="col-sm-7"><input id="CiudadNatal" class="form-control" name="ciudadNatal">Ciudad Natal</div>
+                                                    <label class="col-sm-5 control-label"><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>Ciudad Natal</label>
+                                                    <div class="col-sm-7"><input id="CiudadNatal" class="form-control" name="ciudadNatal"></div>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label class="col-sm-5 control-label"><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>Titulo</label>
-                                                    <div class="col-sm-7"><input id="Correo" class="form-control" name="correo">Correo Eletronico</div>
+                                                    <label class="col-sm-5 control-label"><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>Correo Eletronico</label>
+                                                    <div class="col-sm-7"><input id="Correo" class="form-control" name="correo"></div>
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="col-sm-5 control-label"><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> Sexo</label>
@@ -67,8 +67,6 @@
                                                 <div class="form-group">
                                                     <label class="col-sm-5 control-label"><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> Nacionalidad</label>
                                                     <div class="col-sm-7"><input id="nacionalidad" class="form-control" name="nacionalidad"  required></div>
-
-                                                    <div class="col-sm-7"><input id="titulo" class="form-control" name="titulo"></div>
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="col-sm-5 control-label"><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>Ciudad Natal</label>
