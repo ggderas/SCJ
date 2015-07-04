@@ -65,10 +65,6 @@
                                                     <label class="col-sm-5 control-label"><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> Sexo</label>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label class="col-sm-5 control-label"><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> Nacionalidad</label>
-                                                    <div class="col-sm-7"><input id="nacionalidad" class="form-control" name="nacionalidad"  required></div>
-                                                </div>
-                                                <div class="form-group">
                                                     <label class="col-sm-5 control-label"><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>Ciudad Natal</label>
                                                     <div class="col-sm-7"><input id="CiudadNatal" class="form-control" name="ciudadNatal"></div>
                                                 </div>
