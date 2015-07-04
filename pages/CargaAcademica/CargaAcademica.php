@@ -31,9 +31,7 @@ if(!isset( $_SESSION['user_id'] ))
  
 <html lang="es">
     <head>    
-        
     <meta charset="utf-8">
-    
     </head>
       <div class="container-fluid">
         <div class = "row">
@@ -83,10 +81,8 @@ if(!isset( $_SESSION['user_id'] ))
                 </li>
             </ul>
           </div>
-         
             <div class="col-sm-9">
                 <div id="contenedor" class="content-panel">
-                              
                 </div>
             </div>
       </div> 
