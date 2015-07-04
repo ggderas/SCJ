@@ -43,7 +43,7 @@ require_once($maindir."funciones/timeout.php");
         <title>Sistema Ciencias Jurídicas</title>
         <meta name="generator" content="Bootply" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-		
+		    <link rel="stylesheet" type="text/css" href="">
         <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" >
         <link rel="stylesheet" type="text/css" href="css/datatables/dataTables.bootstrap.css">
 
@@ -67,7 +67,7 @@ require_once($maindir."funciones/timeout.php");
         <link href="bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
     
 	    <!-- switch CSS -->
-	    <link href="bower_components/bootstrap-switch-master/dist/css/bootstrap3/bootstrap-switch.css" rel="stylesheet">
+	      <link href="bower_components/bootstrap-switch-master/dist/css/bootstrap3/bootstrap-switch.css" rel="stylesheet">
 	
         <!-- Timeline CSS -->
         <link href="dist/css/timeline.css" rel="stylesheet">

@@ -1,29 +1,3 @@
-<?php
-
-    $maindir = "../../";
-
-  if(isset($_GET['contenido']))
-    {
-      $contenido = $_GET['contenido'];
-    }
-  else
-    {
-      $contenido = 'secretaria_academica';
-    }
-
-  require_once($maindir."funciones/check_session.php");
-
-  require_once($maindir."funciones/timeout.php");
-
-
-if(!isset( $_SESSION['user_id'] ))
-  {
-    header('Location: '.$maindir.'login/logout.php?code=100');
-    exit();
-  }
-?>
-
-<br>
 
 <div class="container">
   <div class="Row">
@@ -31,7 +5,7 @@ if(!isset( $_SESSION['user_id'] ))
       <form>
           <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">Tipo de estudiante</h1>
+                <h1 class="page-header">Modificar el tipo de estudiante</h1>
             </div>
           </div>
           <div class="panel panel-default">
@@ -49,7 +23,7 @@ if(!isset( $_SESSION['user_id'] ))
                   <input type="text" class="form-control" id="nombre" disabled="False">
                 </div>
                 <div class="form-group">
-                  <label>Eliga nuevo tipo estudiante</label>
+                  <label>Seleccione nuevo tipo estudiante</label>
                 <select class="form-control">
                   <option>LLENAR EL COMBOBOX CON LA BD</option>
                 </select>

@@ -1,12 +1,26 @@
+<<<<<<< HEAD
 <html lang="es">
     <head></head>
+=======
+<link href="css/datepicker.css" rel="stylesheet">
+<link href="css/prettify.css" rel="stylesheet">
+   
+<script src="js/prettify.js"></script>
+<script src="js/bootstrap-datepicker.js"></script>
+>>>>>>> ClaudioPaz
     <body>
           <form role="form" id="form" method="post" class="form-horizontal" action="#">
             <!-- .panel-heading -->
             <div class="panel-body">
+<<<<<<< HEAD
                 <h1>Información Personal de Docentes</h1></br>
                 <div class="panel-group" id="accordion">
                     <div class="panel panel-primary">
+=======
+                <h1>Nuevo Docente</h1></br>
+                <div class="panel-group" id="accordion">
+                    <div class="panel panel-default">
+>>>>>>> ClaudioPaz
                         <div class="panel-heading">
                             <h4 class="panel-title">
                                 <label><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Datos Generales del Docente</label>
@@ -40,6 +54,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label class="col-sm-5 control-label"><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>Titulo</label>
+<<<<<<< HEAD
                                     <div class="col-sm-7"><input id="titulo" class="form-control" name="titulo">Titulo</div>
                                 </div>
                                 <div class="form-group">
@@ -56,10 +71,35 @@
                                 <div class="form-group">
                                     <label class="col-sm-5 control-label"><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> Nacionalidad</label>
                                     <div class="col-sm-7"><input id="nacionalidad" class="form-control" name="nacionalidad"  required></div>
+=======
+                                    <div class="col-sm-7"><input id="titulo" class="form-control" name="titulo"></div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-5 control-label"><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>Ciudad Natal</label>
+                                    <div class="col-sm-7"><input id="CiudadNatal" class="form-control" name="ciudadNatal"></div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-5 control-label"><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>Correo Electronico</label>
+                                    <div class="col-sm-7"><input id="Correo" class="form-control" name="correo"></div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-5 control-label"><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> Sexo</label>
+                                    <input type="radio" name="sex" value="male">Masculino<br>
+                                    <input type="radio" name="sex" value="female">Feminino
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-5 control-label"><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> Nacionalidad</label>
+                                    <div class="col-sm-7"><select class="form-control" id="nacionalidad" name="nacionalidad"></select>
+                                        <br>
+>>>>>>> ClaudioPaz
                                 </div>
                                 <div class="form-group">
                                     <label class="col-sm-5 control-label"><strong><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> Fecha de Nacimiento</strong></label>
                                     <div class="col-sm-7"><input id="fecha" type="date" name="fecha" autocomplete="off" class="input-xlarge" format="yyyy-mm-dd" required><br></div>
+<<<<<<< HEAD
+=======
+                                    
+>>>>>>> ClaudioPaz
                                 </div>
                                 <div class="form-group">
                                     <label class="col-sm-5 control-label"><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> Estado civil</label>
@@ -76,4 +116,7 @@
         </div>
         </form>
     </body>
+<<<<<<< HEAD
 </html>
+=======
+>>>>>>> ClaudioPaz

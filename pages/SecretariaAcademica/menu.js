@@ -23,7 +23,7 @@
     $("#TipoEstudiante").click(function(event) {
       event.preventDefault();
       
-      $("#contenedor").load( "pages/SecretariaAcademica/tipoEstudiante.php");
+      $("#contenedor").load( "pages/SecretariaAcademica/Tipo_Estudiante/tipo_estudiante.php");
       }); 
 
     $("#nuevaSolicitud").click(function(event) {

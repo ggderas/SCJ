@@ -83,8 +83,6 @@ if(!isset( $_SESSION['user_id'] ))
           </div>
             <div class="col-sm-9">
                 <div id="contenedor" class="content-panel">
-
-                              
                 </div>
             </div>
       </div> 
