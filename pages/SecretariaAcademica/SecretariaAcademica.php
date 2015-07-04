@@ -44,7 +44,7 @@ if(!isset( $_SESSION['user_id'] ))
                             <a id="RegistroEstudiante" href="#"><i class="glyphicon glyphicon-edit"></i>Registro de Estudiantes</a>
                           </li>
                           <li>
-                            <a id="TipoEstudiante"  href="#"><i class="fa fa-user fa-fw"></i>Tipo Estudiante</a>
+                            <a id="TipoEstudiante"  href="#"><i class="fa fa-user fa-fw"></i>Modificar el tipo Estudiante</a>
                           </li>
                         </ul>
                     </li>
@@ -64,7 +64,6 @@ if(!isset( $_SESSION['user_id'] ))
             </div>
 
              <div class="col-sm-9">
-                <h1 class="page-header"><strong>Secretaría Académica</strong></h1>
                 <div id="contenedor" class="content-panel">
                               
                 </div>
