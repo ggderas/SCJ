@@ -82,7 +82,7 @@ while ($row = mysql_fetch_array($query)) {
  
    function llegadaCrear()
 {
-    $("#contenedor").load('pages/crearPOA.php');
+    $("#contenedor").load('pages/crearEdificios.php');
      //$("#contenedor").load('../cargarPOAs.php');
 }
  
@@ -257,7 +257,7 @@ while ($row = mysql_fetch_array($query)) {
 
             <div class="row">            
                 <div class="panel panel-default">
-                    <a id="retonoPOA" href="#"><i class="fa fa-table fa-fw"></i>POA:<strong> <?php echo " ".$nombre; ?></strong></a>
+                    <a id="retornoEdificio" href="#"><i class="fa fa-table fa-fw"></i>Edificio:<strong> <?php echo " ".$nombre; ?></strong></a>
                     
                 </div>
                 
