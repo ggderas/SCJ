@@ -49,7 +49,7 @@ if(!isset( $_SESSION['user_id'] ))
                   <input type="text" class="form-control" id="nombre" disabled="False">
                 </div>
                 <div class="form-group">
-                  <label>Eliga nuevo tipo estudiante</label>
+                  <label>Seleccione nuevo tipo estudiante</label>
                 <select class="form-control">
                   <option>LLENAR EL COMBOBOX CON LA BD</option>
                 </select>
