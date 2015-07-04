@@ -12,34 +12,70 @@
           
       $("#div_contenido").load("pages/CargaAcademica/CargaAcademica.php");
       });
-    $("#RegistroEstudiante").click(function(event) {
+    $("#Asignaturas").click(function(event) {
       event.preventDefault();
           
       $("#contenedor" ).load( //Pantalla para ingresar un estudiante
                             );
       }); 
-    $("#TipoEstudiante").click(function(event) {
+    $("#Edificios").click(function(event) {
       event.preventDefault();
           
       $("#contenedor" ).load( // Pantalla para modificar el tipo de estudiante
                             );
       }); 
 
-    $("#nuevaSolicitud").click(function(event) {
+    $("#Aulas").click(function(event) {
       event.preventDefault();
       $("#contenedor").load(// Pantalla para ingresar una nueva solicitud
                             );
       });
 
-    $("#SolicitudEstudiante").click(function(event) {
+    $("#Clases").click(function(event) {
       event.preventDefault();
       $("#contenedor").load(// Pantalla para ingresar una solicitud por estudiante
                             );
       }); 
 
+    $("#AsignacionClases").click(function(event) {
+      event.preventDefault();
+      $("#contenedor").load(// Pantalla para Hacer una busqueda avanzada
+                            );
+      });
+
+    $("#RegistroDocentes").click(function(event) {
+      event.preventDefault();
+      $("#contenedor").load( "pages/CargaAcademica/RegristroDocentes.php"
+                            );
+      });
+    $("#Facultad").click(function(event) {
+      event.preventDefault();
+      $("#contenedor").load(// Pantalla para Hacer una busqueda avanzada
+                            );
+      }); 
+    $("#AreasProyecto").click(function(event) {
+      event.preventDefault();
+      $("#contenedor").load(// Pantalla para Hacer una busqueda avanzada
+                            );
+      }); 
+    $("#AreasVinculacion").click(function(event) {
+      event.preventDefault();
+      $("#contenedor").load(// Pantalla para Hacer una busqueda avanzada
+                            );
+      }); 
+    $("#Proyectos").click(function(event) {
+      event.preventDefault();
+      $("#contenedor").load(// Pantalla para Hacer una busqueda avanzada
+                            );
+      });
+    $("#AsigancionProyecto").click(function(event) {
+      event.preventDefault();
+      $("#contenedor").load(// Pantalla para Hacer una busqueda avanzada
+                            );
+      });
     $("#BusquedaAvanzada").click(function(event) {
       event.preventDefault();
       $("#contenedor").load(// Pantalla para Hacer una busqueda avanzada
                             );
-      });   
+      });    
 });

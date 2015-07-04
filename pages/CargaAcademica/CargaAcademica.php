@@ -31,9 +31,7 @@ if(!isset( $_SESSION['user_id'] ))
  
 <html lang="es">
     <head>    
-        
     <meta charset="utf-8">
-    
     </head>
       <div class="container-fluid">
         <div class = "row">
@@ -62,7 +60,7 @@ if(!isset( $_SESSION['user_id'] ))
                       </li>
                     </ul>
                 </li>
-                <li id = "BusquedaAvanzada" class="nav-header"> <a href="#" data-toggle="collapse" data-target="#userMenu2">
+                <li id = "RegistroDocentes" class="nav-header"> <a href="#" data-target="#userMenu2">
                   <h5><i class="glyphicon glyphicon-edit"></i> Registro de docentes</h5>
                   </a>
                 </li>
@@ -83,18 +81,11 @@ if(!isset( $_SESSION['user_id'] ))
                 </li>
             </ul>
           </div>
-         
             <div class="col-sm-9">
-              <div class="col-md-12">
                 <div id="contenedor" class="content-panel">
-                  <div class="col-lg-12">
-                    
-                  </div>
-                  <div id="wrapper">
-                     <!--  Pantalla principal de la carga academica -->
-                  </div>                       
+
+                              
                 </div>
-              </div>
             </div>
       </div> 
     </div>
