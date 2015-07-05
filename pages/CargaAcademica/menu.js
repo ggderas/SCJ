@@ -45,7 +45,7 @@
 
     $("#RegistroDocentes").click(function(event) {
       event.preventDefault();
-      $("#contenedor").load( "pages/CargaAcademica/RegristroDocentes.php"
+      $("#contenedor").load( "pages/CargaAcademica/RegistroDocentes/RegristroDocentes.php"
                             );
       });
     $("#Facultad").click(function(event) {

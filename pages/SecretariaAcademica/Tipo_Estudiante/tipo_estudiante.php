@@ -8,7 +8,7 @@
                 <h1 class="page-header">Modificar el tipo de estudiante</h1>
             </div>
           </div>
-          <div class="panel panel-default">
+          <div class="panel panel-primary">
             <div class="panel-body">
                 <div class="form-group">
                   <label >Número de Identidad</label>

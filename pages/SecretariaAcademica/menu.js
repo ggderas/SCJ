@@ -28,8 +28,7 @@
 
     $("#nuevaSolicitud").click(function(event) {
       event.preventDefault();
-      alert("Entro");
-      $("#contenedor").load(// Pantalla para ingresar una nueva solicitud
+      $("#contenedor").load("pages/SecretariaAcademica/tipo_de_solicitud/tipo_de_solicitud.php"
                             );
       });
 
