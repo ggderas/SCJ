@@ -21,7 +21,7 @@
     $("#Edificios").click(function(event) {
       event.preventDefault();
           
-      $("#contenedor" ).load( // Pantalla para modificar el tipo de estudiante
+      $("#contenedor" ).load( "pages/CargaAcademica/ca_crearEdificios.php"
                             );
       }); 
 
