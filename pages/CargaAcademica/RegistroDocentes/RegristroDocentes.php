@@ -136,11 +136,11 @@
                                                         <input type="radio" name="sexo" id="sexoMas" value="M">&nbsp;Masculino
                                                     </div>
                                                 </div>
-<<<<<<< HEAD:pages/CargaAcademica/RegristroDocentes.php
+
                                                 <div class="form-group">
                                                     <label class="col-sm-5 control-label"><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>Ciudad Natal</label>
                                                     <div class="col-sm-7"><input id="CiudadNatal" class="form-control" name="ciudadNatal"></div>
-=======
+
                                                 <div class="form-group" id="nacio">
                                                     <label class="col-sm-5 control-label"><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> Nacionalidad</label>
                                                     <div class="col-sm-7"><input id="nacionalidad" class="form-control" name="nacionalidad" required></div>
@@ -148,7 +148,6 @@
                                                 <div class="form-group" id="cnatal">
                                                     <label class="col-sm-5 control-label"> Ciudad Natal</label>
                                                     <div class="col-sm-7"><input id="ciudadNatal" class="form-control" name="ciudadNatal"></div>
->>>>>>> ClaudioPaz:pages/CargaAcademica/RegistroDocentes/RegristroDocentes.php
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="col-sm-5 control-label" data-link-field="dtp_input2"><strong><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> Fecha de Nacimiento</strong></label>
