@@ -50,9 +50,6 @@ if(!isset( $_SESSION['user_id'] ))
                         <a id="Edificios"  href="#"><i class="glyphicon glyphicon-equalizer"></i> Edificios</a>
                       </li>
                       <li>
-                        <a id="Aulas"  href="#"><i class="glyphicon glyphicon-book"></i> Aulas</a>
-                      </li>
-                      <li>
                         <a id="Clases"  href="#"><i class="glyphicon glyphicon-list"></i> Clases</a>
                       </li>
                       <li>

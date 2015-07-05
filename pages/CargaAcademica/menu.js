@@ -21,7 +21,7 @@
     $("#Edificios").click(function(event) {
       event.preventDefault();
           
-      $("#contenedor" ).load( // Pantalla para modificar el tipo de estudiante
+      $("#contenedor" ).load( "pages/CargaAcademica/ca_crearEdificios.php"
                             );
       }); 
 
@@ -45,7 +45,7 @@
 
     $("#RegistroDocentes").click(function(event) {
       event.preventDefault();
-      $("#contenedor").load( "pages/CargaAcademica/RegristroDocentes.php"
+      $("#contenedor").load( "pages/CargaAcademica/RegistroDocentes/RegristroDocentes.php"
                             );
       });
     $("#Facultad").click(function(event) {

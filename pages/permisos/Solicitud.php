@@ -88,8 +88,6 @@ require_once($maindir . "funciones/timeout.php");
 							//documentos que realizaran otros procedimientos sin necesidad de refrescar toda la pagina
 							return false;
 						}
-						
-		
 		);
     });
 

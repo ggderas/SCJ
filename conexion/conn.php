@@ -2,7 +2,7 @@
 <?php
 
  $host = 'localhost';
- $dbname = 'sistema_ciencias_juridicas';
+ $dbname = 'ccjj';
  $username = 'root';
  $password = '';
  $conexion = mysql_connect($host, $username, $password);

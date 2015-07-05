@@ -10,14 +10,13 @@
       event.preventDefault();
       alert("entro");
           
-      $("#div_contenido").load("pages/SecrerariaAcademica/SecrerariaAcademica.php");
+      $("#div_contenido").load("pages/SecretariaAcademica/SecrerariaAcademica.php");
       });
     $("#RegistroEstudiante").click(function(event) {
 
       event.preventDefault();
-      alert("Entro");
           
-      $("#contenedor" ).load( //Pantalla para ingresar un estudiante
+      $("#contenedor" ).load( "pages/SecretariaAcademica/RegistroEstudiantes/RegistroDeEstudiantes.php"
                             );
       }); 
     $("#TipoEstudiante").click(function(event) {
@@ -28,8 +27,7 @@
 
     $("#nuevaSolicitud").click(function(event) {
       event.preventDefault();
-      alert("Entro");
-      $("#contenedor").load(// Pantalla para ingresar una nueva solicitud
+      $("#contenedor").load("pages/SecretariaAcademica/tipo_de_solicitud/tipo_de_solicitud.php"
                             );
       });
 
