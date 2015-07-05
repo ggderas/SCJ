@@ -27,6 +27,7 @@
                     type: "POST",
                     dataType: "html",
                     contentType: "application/x-www-form-urlencoded",
+                    url: peticion,
                     success: llegadaGuardar(data),
                     beforeSend: insertarDocente,
                     timeout: 4000,

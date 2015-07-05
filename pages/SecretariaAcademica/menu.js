@@ -10,14 +10,13 @@
       event.preventDefault();
       alert("entro");
           
-      $("#div_contenido").load("pages/SecrerariaAcademica/SecrerariaAcademica.php");
+      $("#div_contenido").load("pages/SecretariaAcademica/SecrerariaAcademica.php");
       });
     $("#RegistroEstudiante").click(function(event) {
 
       event.preventDefault();
-      alert("Entro");
           
-      $("#contenedor" ).load( //Pantalla para ingresar un estudiante
+      $("#contenedor" ).load( "pages/SecretariaAcademica/RegistroEstudiantes/RegistroDeEstudiantes.php"
                             );
       }); 
     $("#TipoEstudiante").click(function(event) {
