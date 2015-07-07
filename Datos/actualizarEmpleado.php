@@ -32,7 +32,7 @@
  }else{      
               
      $enlace = mysql_connect('localhost', 'root', '');
-     mysql_select_db("sistema_ciencias_juridicas", $enlace);
+     mysql_select_db("ccjj", $enlace);
 		 
 	$queryAE = mysql_query("UPDATE `empleado` SET `No_Empleado`='$codigo',`Id_departamento`='$id_departamento',`Fecha_ingreso`='$fechaIngreso',`Observacion`='$obs'  WHERE N_identidad ='".$n_identidad."'");
         

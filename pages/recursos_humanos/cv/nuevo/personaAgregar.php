@@ -14,7 +14,7 @@ function limpiar($tags)
 //Información Personal
 if(isset($_POST['agregarPE'])){
 if (!empty($_POST['identidad']) and !empty($_POST['primerNombre']) and !empty($_POST['primerApellido']) and !empty($_POST['segundoApellido'])
-    and !empty($_POST['direccion']) and !empty($_POST['email'])
+    and !empty($_POST['email'])
 ) {
     $identi = limpiar($_POST['identidad']);
     $pNombre = limpiar($_POST['primerNombre']);

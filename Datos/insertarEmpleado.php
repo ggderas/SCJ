@@ -25,7 +25,7 @@
                //  $fechaingreso=$_POST['fecha2'];
                //  
                  $enlace = mysql_connect('localhost', 'root', '');
-                 mysql_select_db("sistema_ciencias_juridicas", $enlace);
+                 mysql_select_db("ccjj", $enlace);
            
               
               $rec2=mysql_query("SELECT N_identidad FROM empleado WHERE N_identidad='".$identi."'");

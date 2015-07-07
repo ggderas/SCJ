@@ -66,7 +66,7 @@ if(isset($_POST["tipoProcedimiento"])){
     <meta charset="utf-8">
     
     
-    
+    <script type="text/javascript" src="pages/recursos_humanos/jquery-ui.js"></Script>
     
     
      <script>
@@ -97,8 +97,8 @@ if(isset($_POST["tipoProcedimiento"])){
                
                 
                 data={
-                    idpersona:$('#identidad').val()
-                }
+                    idpersona:$('#Buscar_persona').val()
+                };
                 
                 $.ajax({
                     async: true,
@@ -135,10 +135,39 @@ if(isset($_POST["tipoProcedimiento"])){
                 $("#Rbusqueda").text('Problemas en el servidor.');
             }
 
+/*
+
+$(function(){ 
+    
+ 
+    $("#Buscar_persona").autocomplete({
+       // alert("holaaa");
+        source:  "pages/recursos_humanos/BusquedaAutocompletado.php",
+        minLength: 2,
+        select : function(event, ui){
+            
+         
+          
+            $("#Rbusqueda").html(
+                    
+                    '<h2>Detalles de persona</h2>'+
+                    '<strong>Nombre persona </strong>'+ ui.item.value +'<br>'
+     
+                    );
+            
+            
+        }
+        
+    });
+
+
+});
+
+*/
 
 
         </script>
-        
+     
     
     
 
@@ -215,7 +244,7 @@ if(isset($_POST["tipoProcedimiento"])){
                           <span class="input-group-addon">buscar por numero de identidad</span>
 
                               <div class="input-group">
-                                  <input id="identidad" type="text"   class="form-control" placeholder="Buscar empleado..."    required>
+                                  <input id="Buscar_persona" type="text"   class="form-control" placeholder="Buscar empleado..."    required>
                                   <span class="input-group-btn">
                                       <button id="buscarP" class="btn btn-primary glyphicon glyphicon-search" type="button"></button>
                                   </span>

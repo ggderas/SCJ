@@ -3,6 +3,17 @@ session_start();
 
         include "../../../../Datos/conexion.php";
 
+        
+   if(isset($_POST["tipoProcedimiento"])){
+    $tipoProcedimiento = $_POST["tipoProcedimiento"];
+    
+    if($tipoProcedimiento == "editarID"){
+       
+    require_once('../../../../pages/recursos_humanos/cv/actualizar/editarID.php');
+    }
+    
+    
+   }
 
         if(isset($_POST['identi'])){
             $identi=$_POST['identi'];
@@ -49,7 +60,7 @@ session_start();
 
             $gId = $_SESSION['Nidenti'];
             //Agregar ON UPDATE CASCADE, ON DELETE CASCADE A LA TABLA telefono.
-            mysql_query("UPDATE persona SET N_identidad = '$identi', Primer_nombre = '$pNombre', Segundo_nombre = '$sNombre', Primer_apellido = '$pApellido',
+            mysql_query("UPDATE persona SET Primer_nombre = '$pNombre', Segundo_nombre = '$sNombre', Primer_apellido = '$pApellido',
             Segundo_apellido = '$sApellido', Fecha_nacimiento = '$fecha', Sexo = '$sexo', Direccion = '$direc', Correo_electronico = '$email', Estado_Civil = '$estCivil', Nacionalidad = '$nacionalidad'
             WHERE N_identidad = '$gId'");
 
@@ -98,8 +109,46 @@ session_start();
         });
         return false;
           }
-            
+          
+          
+          
+          
+          
+          
         });
+        
+        
+          $("#form2").submit(function(e) {
+            e.preventDefault();
+            
+          if(validator()){
+        data2={
+            identi:$('#identidad').val(),
+            identi2:$('#identidadEditar').val(),
+            tipoProcedimiento:"editarID"
+        
+        };
+
+        $.ajax({
+            async: true,
+            type: "POST",
+            dataType: "html",
+            contentType: "application/x-www-form-urlencoded",
+            beforeSend: inicioEnvioAct,
+            success: editarID,
+            timeout: 4000,
+            error: problemas
+        });
+        return false;
+          }
+          
+          
+          
+          
+          
+          
+        });
+        
     });
 
  
@@ -114,6 +163,12 @@ session_start();
     function llegadaActualPersona()
     {
         $("#contenedor").load('pages/recursos_humanos/cv/actualizar/personaActualizar.php',data);
+    }
+    
+    function editarID()
+    {
+        $('body').removeClass('modal-open');
+        $("#contenedor").load('pages/recursos_humanos/cv/actualizar/personaActualizar.php',data2);
     }
 
     function problemasAct()
@@ -231,6 +286,26 @@ session_start();
     <head></head>
     <body>
         
+    <?php
+ 
+  if(isset($codMensaje) and isset($mensaje)){
+    if($codMensaje == 1){
+      echo '<div class="alert alert-success">';
+      echo '<a href="#" class="close" data-dismiss="alert">&times;</a>';
+      echo '<strong>Exito! </strong>';
+      echo $mensaje;
+      echo '</div>';
+    }else{
+      echo '<div class="alert alert-danger">';
+      echo '<a href="#" class="close" data-dismiss="alert">&times;</a>';
+      echo '<strong>Error! </strong>';
+      echo $mensaje;
+      echo '</div>';
+    }
+  } 
+
+?>
+        
         
           <form role="form" id="form" method="post" class="form-horizontal" action="#">
                         <!-- .panel-heading -->
@@ -247,7 +322,10 @@ session_start();
                                                 <div class="col-lg-8">
                                                         <div class="form-group">
                                                             <label class="col-sm-5 control-label"><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> Número de Identidad</label>
-                                                            <div class="col-sm-7"><input id="identidad" class="form-control" name="identidad"  value="<?php echo "$id"; ?>" required pattern="[0-9]{4}[\-][0-9]{4}[\-][0-9]{5}"></div>
+                                                            <div class="col-sm-7"><input id="identidad" class="form-control" name="identidad"  value="<?php echo "$id"; ?>" disabled="TRUE">
+                                                                <a  id="actualizarID"  class="ActualizarIDB btn btn-primary" data-toggle="modal" data-target="#compose-modal">Editar</a> 
+                                                            </div>
+                                                           
                                                         </div>
                                                         <div class="form-group">
                                                             <label class="col-sm-5 control-label"><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> Primer nombre</label>
@@ -335,6 +413,53 @@ session_start();
                                 </br><button type="submit" id="actualizar" class="ActualizarB btn btn-primary">Guardar Información</button>
                                 </div>
                                 </form>
+        
+        
+        
+              <div class="modal fade" id="compose-modal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+	  <form role="form" id="form2" name="form" action="#">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title"><i class="glyphicon glyphicon-floppy-disk"></i> Editar numero de identidad </h4>
+      </div>
+              <div class="modal-body">
+             
+                  
+                
+                                      <div class="form-group">
+                                        <label class="col-lg-5 control-label">Numero de identidad</label>
+                                        
+                                        <div class="col-lg-5"><input id="identidadEditar" class="form-control" name="identidadEditar"  value="<?php echo "$id"; ?>" placeholder="Ejemplo:0805-1689-19195" required pattern="[0-9]{4}[\-][0-9]{4}[\-][0-9]{5}">
+                                                               
+                                        </div>
+                                    
+                                  
+                                    
+                                     </div>
+                  
+                  <div id="resultadoID">
+                      
+                      
+                      
+                  </div>
+              
+                  
+                  
+                  
+    
+              </div>
+              <div class="modal-footer clearfix">
+            <button name="submit" id="submit" class="ModificarIDB btn btn-primary pull-left"><i class="glyphicon glyphicon-pencil"></i> Modificar</button>
+          </div>
+                
+                    
+          </form>
+    
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+   </div>
         
         
         
