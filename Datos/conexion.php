@@ -1,5 +1,5 @@
 <?php 
-$conectar = new mysqli('205.178.146.115','ddvderecho','DDVD3recho','ccjj');
+$conectar = new mysqli('localhost','root','','ccjj');
 //$cn = mysql_connect("localhost","root","");
 //mysql_select_db("poa", $cn);
 
