@@ -1,10 +1,10 @@
 
 <?php
 
- $host = '205.178.146.115';
+ $host = 'localhost';
  $dbname = 'ccjj';
- $username = 'ddvderecho';
- $password = 'DDVD3recho';
+ $username = 'root';
+ $password = '';
  $conexion = mysql_connect($host, $username, $password);
  mysql_select_db($dbname);
 
