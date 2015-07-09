@@ -2,10 +2,11 @@
 <?php
 
 
-include("../../../conexion/conn.php");  
+$maindir = "../../../";
+include($maindir."conexion/config.inc.php");  
 
 
-   $maindir = "../../../";
+   
 
   require_once($maindir."funciones/check_session.php");
 
@@ -33,12 +34,20 @@ include("../../../conexion/conn.php");
 	    $estCivil = $_POST['estCivil'];
 	    $nacionalidad = $_POST['nacionalidad'];
       
-		      // realizamos la consulta
-      $query = "SP_REGISTRAR_DOCENTE( , @pcMensajeError)"; // Lugar para el pl
-      $result = mysql_query($query, $conexion) or die("error en la consulta"); // hacemos la consulta a la base de datos
-      $mensaje = " ".$pNombre . " " . $pApellido . " ha sido agregado(a) con éxito!";
-      $codMensaje = 1;
+       $stmt = $db->prepare("CALL SP_REGISTRAR_DOCENTE(?,?,?,?,?,?,?,?,?,?,?,?,?,?,@mensaje,@codMensaje)");
+		      //Introduccion de parametros
+          $stmt->bindParam(1, $identi, PDO::PARAM_STR); 
+
+
+          // 
+       $stmt->execute();
+       $output = $db->query("select @mensaje, @codMensaje")->fetch(PDO::FETCH_ASSOC);
+      //var_dump($output);
+       $mensaje = $output['@mensaje'];
+       $codMensaje = $output['@codMensaje'];
+          // realizamos la consulta
     
+
     }catch(PDOExecption $e){
       $mensaje = 'error al ingresar el registro o registro actualmente existente';
       $codMensaje = 0;

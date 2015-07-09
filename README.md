@@ -6,7 +6,7 @@
 ## Credenciales
 
 1. $host = 'localhost';
-2. $dbname = 'sistema_ciencias_juridicas';
+2. $dbname = 'ccjj';
 3. $username = 'root';
 4. $password = '';
 
