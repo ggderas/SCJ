@@ -6,30 +6,32 @@
 
         $("form").submit(//Se realiza cuando se ejecuta un "submit" en el formulario, el "submit" se encuentra en el boton "Envíar Solicitud
             function(e) {
-                e.preventDefault();
-                var peticion = $('form').attr('action');
-                data = {
-                    identidad:$('#identidad').val(),
-                    primerNombre:$('#primerNombre').val(),
-                    segundoNombre:$('#segundoNombre').val(),
-                    primerApellido:$('#primerApellido').val(),
-                    segundoApellido:$('#segundoApellido').val(),
-                    sexo:document.querySelector('input[name="sexo"]:checked').value,
-                    fecha:$('#fecha').val(),
-                    telefono:$('#telefono').val(),
-                    email:$('#correo').val(),
-                    estCivil:$('#estCivil').val(),
-                    nacionalidad:$('#nacionalidad').val(),
-                    ciudadNatal: $('#ciudadNatal').val(),
-                }
+                e.preventDefault();    
+                var data1 = {
+                        "identidad":$('#identidad').val(),
+                        "primerNombre":$('#primerNombre').val(),
+                        "segundoNombre":$('#segundoNombre').val(),
+                        "primerApellido":$('#primerApellido').val(),
+                        "segundoApellido":$('#segundoApellido').val(),
+                        "sexo":$('input[name="sexo"]:checked').val(),
+                        "fecha":$("#dp1").val(),
+                        "telefono":$('#telefono').val(),
+                        "email":$('#correo').val(),
+                        "estCivil":$('#estCivil').val(),
+                        "nacionalidad":$('#nacionalidad').val(),
+                        "direccion": $('#direccion').val(),
+                        "nempleado": $('#nempleado').val()
+                    };
                 $.ajax({
                     async: true,
                     type: "POST",
-                    dataType: "html",
-                    contentType: "application/x-www-form-urlencoded",
-                    url: peticion,
-                    success: llegadaGuardar(data),
-                    beforeSend: insertarDocente,
+                    // dataType: "html",
+                    // contentType: "application/x-www-form-urlencoded",
+                    url: "pages/CargaAcademica/RegistroDocentes/RegistrarDocente.php",
+                    data: data1,
+                    success: function(data){
+                        $('#notificaciones').html(data);
+                    },
                     timeout: 4000,
                     error: problemasInsertar
                     
@@ -38,9 +40,11 @@
                 //documentos que realizaran otros procedimientos sin necesidad de refrescar toda la pagina
             });
         });
-        function llegadaGuardar(datos)
+        function llegadaGuardar(dato)
         {
-            $("#notificaciones").html(datos);
+            alert("hola");
+
+            $("#notificaciones").html(dato);
         }
 
         function insertarDocente()
@@ -90,7 +94,6 @@
                     <div class="panel-body">
                         <h1>Información Personal de Docentes</h1></br>
                         <div class="panel-group" id="accordion">
-                                <h1>Nuevo Docente</h1></br>
                                 <div class="panel-group" id="accordion">
                                     <div class="panel panel-primary">
                                         <div class="panel-heading">
@@ -103,6 +106,10 @@
                                                 <div class="form-group" id="identi">
                                                     <label class="col-sm-5 control-label"><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> Número de Identidad</label>
                                                     <div class="col-sm-7"><input id="identidad" class="form-control" name="identidad" placeholder="Ejemplo:0000-0000-00000" required pattern="[0-9]{4}[\-][0-9]{4}[\-][0-9]{5}"></div>
+                                                </div>
+                                                <div class="form-group" id="empleado">
+                                                    <label class="col-sm-5 control-label"><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> Número de empleado</label>
+                                                    <div class="col-sm-7"><input type = "number" id="nempleado" class="form-control" name="nempleado"></div>
                                                 </div>
                                                 <div class="form-group" id="primerN">
                                                     <label class="col-sm-5 control-label"><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> Primer nombre</label>
@@ -122,32 +129,28 @@
                                                 </div>
                                                  <div class="form-group" id="tel">
                                                     <label class="col-sm-5 control-label"><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> Telefono</label>
-                                                    <div class="col-sm-7"><input id="telefono" class="form-control" name="telefono" required></div>
+                                                    <div class="col-sm-7"><input type= "tel" id="telefono" class="form-control" name="telefono" placeholder="Ejemplo:00-00-00-00" required pattern="[0-9]{2}[\-][0-9]{2}[\-][0-9]{2}[\-][0-9]{2}" required></div>
                                                 </div>
-                                                <div class="form-group" id="correo">
+                                                <div class="form-group" id="divCorreo">
                                                     <label class="col-sm-5 control-label"><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> Correo</label>
-                                                    <div class="col-sm-7"><input id="correo" class="form-control" name="correo" required></div>
+                                                    <div class="col-sm-7"><input type= "text" id="correo" class="form-control" name="correo" pattern="[^ @]*@[^ @]*" required></div>
                                                 </div>
+
                                                 <div class="form-group" id="sexoOpcion" name="sex">
                                                     <label class="col-sm-5 control-label"><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> Sexo</label>
                                                     <div class="col-sm-7">
-                                                        <input type="radio" name="sexo" id="sexoFem" value="F" checked>&nbsp;Femenino 
+                                                        <input type="radio" name="sexo" id="sexo" value="F" >&nbsp;Femenino 
                                                         <br>
-                                                        <input type="radio" name="sexo" id="sexoMas" value="M">&nbsp;Masculino
+                                                        <input type="radio" name="sexo" id="sexo" value="M" checked>&nbsp;Masculino
                                                     </div>
                                                 </div>
-
-                                                <div class="form-group">
-                                                    <label class="col-sm-5 control-label"><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>Ciudad Natal</label>
-                                                    <div class="col-sm-7"><input id="CiudadNatal" class="form-control" name="ciudadNatal"></div>
-
                                                 <div class="form-group" id="nacio">
                                                     <label class="col-sm-5 control-label"><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> Nacionalidad</label>
                                                     <div class="col-sm-7"><input id="nacionalidad" class="form-control" name="nacionalidad" required></div>
                                                 </div>
-                                                <div class="form-group" id="cnatal">
-                                                    <label class="col-sm-5 control-label"> Ciudad Natal</label>
-                                                    <div class="col-sm-7"><input id="ciudadNatal" class="form-control" name="ciudadNatal"></div>
+                                                <div class="form-group" id="direc">
+                                                    <label class="col-sm-5 control-label"> Dirección</label>
+                                                    <div class="col-sm-7"><input id="direccion" class="form-control" name="ciudadNatal"></div>
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="col-sm-5 control-label" data-link-field="dtp_input2"><strong><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> Fecha de Nacimiento</strong></label>
@@ -173,5 +176,4 @@
                     </div>
                 </form>
             </body>
-</html>
 

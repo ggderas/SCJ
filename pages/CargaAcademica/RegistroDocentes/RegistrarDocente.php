@@ -1,40 +1,69 @@
 
-<?php  
-function limpiar($tags)
-{
-    $tags = strip_tags($tags);
-    return $tags;
-    
-    
-}
+<?php
+
+
+$maindir = "../../../";
+include($maindir."conexion/config.inc.php");  
+
+
+   
+
+  require_once($maindir."funciones/check_session.php");
+
+  require_once($maindir."funciones/timeout.php");
+  
+   if(!isset( $_SESSION['user_id'] ))
+  {
+    header('Location: '.$maindir.'login/logout.php?code=100');
+    exit();
+  }
+
+
 	try{
 
-		$identi = limpiar($_POST['identidad']);
-    	$pNombre = limpiar($_POST['primerNombre']);
-    	$sNombre = limpiar($_POST['segundoNombre']);
-	    $pApellido = limpiar($_POST['primerApellido']);
-	    $sApellido = limpiar($_POST['segundoApellido']);
-	    $fNac = limpiar($_POST['fecha']);
+		  $identi = $_POST['identidad'];
+    	$pNombre = $_POST['primerNombre'];
+    	$sNombre = $_POST['segundoNombre'];
+	    $pApellido = $_POST['primerApellido'];
+	    $sApellido = $_POST['segundoApellido'];
+	    $fNac = $_POST['fecha'];
 	    $sexo = $_POST['sexo'];
-	    $tel = limpiar($_POST['telefono']);
-	    $direc = limpiar($_POST['ciudadNatal']);
-	    $email = limpiar($_POST['correo']);
+	    $tel = $_POST['telefono'];
+	    $direc = $_POST['direccion'];
+	    $email = $_POST['email'];
 	    $estCivil = $_POST['estCivil'];
 	    $nacionalidad = $_POST['nacionalidad'];
-
-		      // realizamos la consulta
-      $query = ""; // Lugar para el pl
-      $result = mysql_query($query, $conexion) or die("error en la consulta"); // hacemos la consulta a la base de datos
-      $mensaje = "El usuario se ha creado exitosamente...";
-      $codMensaje = 1;
+      $nempleado = $_POST['nempleado'];
+      
+       $stmt = $db->prepare("CALL SP_REGISTRAR_DOCENTE(?,?,?,?,?,?,?,?,?,?,?,?,@mensajeError)");
+		      //Introduccion de parametros
+          $stmt->bindParam(1, $identi, PDO::PARAM_STR); 
+          $stmt->bindParam(2, $pNombre, PDO::PARAM_STR);
+          $stmt->bindParam(3, $sNombre, PDO::PARAM_STR); 
+          $stmt->bindParam(4, $pApellido, PDO::PARAM_STR); 
+          $stmt->bindParam(5, $sApellido, PDO::PARAM_STR); 
+          $stmt->bindParam(6, $fNac, PDO::PARAM_STR); 
+          $stmt->bindParam(7, $sexo, PDO::PARAM_STR); 
+          $stmt->bindParam(8, $direc, PDO::PARAM_STR); 
+          $stmt->bindParam(9, $estCivil, PDO::PARAM_STR); 
+          $stmt->bindParam(10, $nacionalidad, PDO::PARAM_STR);
+          $stmt->bindParam(11, $email, PDO::PARAM_STR);
+          $stmt->bindParam(12, $nempleado, PDO::PARAM_STR);   
+         
+       $stmt->execute();
+       $output = $db->query("select @mensajeError")->fetch(PDO::FETCH_ASSOC);
+      //var_dump($output);
+       $mensaje = $output['@mensajeError'];
+       $codMensaje = 0;
+       
     
-    }catch(PDOExecption $e){
-      $mensaje="No se ha procesado su peticion, comuniquese con el administrador del sistema";
-      $codMensaje =0;
-    }
 
-  if(isset($codMensaje) and isset($mensaje)){
-    if($codMensaje == 1){
+    }catch(PDOExecption $e){
+      //$mensaje = 'error al ingresar el registro o registro actualmente existente';
+      $codMensaje = 0;
+    }
+    
+    if(is_null($mensaje)){
       echo '<div class="alert alert-success alert-succes">
         <a href="#" class="close" data-dismiss="alert">&times;</a>
         <strong> Exito! </strong>'.$mensaje.'</div>';
@@ -43,5 +72,4 @@ function limpiar($tags)
         <a href="#" class="close" data-dismiss="alert">&times;</a>
         <strong> Error! </strong>'.$mensaje.'</div>';
     }
-  } 
  ?>

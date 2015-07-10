@@ -1,3 +1,4 @@
+
 ////////////////////////////////////////////////////////////////////////////////
 
 Notas:
@@ -11,7 +12,7 @@ Notas:
 
 Funcionamiento de la plantilla de index.php ( no confundir con index.html )
 
-La plantilla de index esta compuesta por un encabezado dinamico head.php el cual 
+La plantilla de index esta compuesta por un encabezado dinamico head.php el cual
 contiene el codigo la barra navegacion y los componentes de timeout.php el cual
 verifica si la seccion ha caducado y emvia el usuario a la pantalla de login, el
 otro componente es check_session.php el cual verifica si correspondientemente se
@@ -29,8 +30,8 @@ ejemplo: ajax_(home.php);
 
 Funcionamiento de la plantilla home.php
 
-Esta plantilla es el contenido que se proporcionara dinamicamente a la division 
-dentro de la plantilla index.( todas las demas plantillas deben de comenzar 
+Esta plantilla es el contenido que se proporcionara dinamicamente a la division
+dentro de la plantilla index.( todas las demas plantillas deben de comenzar
 con el codigo php ubicado al principio de head.php )
 
 En esta plantilla se encuentra la referencia al componente del navbar donde
