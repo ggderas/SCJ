@@ -3,6 +3,17 @@ session_start();
 
         include "../../../../Datos/conexion.php";
 
+        
+   if(isset($_POST["tipoProcedimiento"])){
+    $tipoProcedimiento = $_POST["tipoProcedimiento"];
+    
+    if($tipoProcedimiento == "editarID"){
+       
+    require_once('../../../../pages/recursos_humanos/cv/actualizar/editarID.php');
+    }
+    
+    
+   }
 
         if(isset($_POST['identi'])){
             $identi=$_POST['identi'];
@@ -32,28 +43,46 @@ session_start();
         }
 
         //Información Personal
+        
 	  	if(!empty($_POST['identi']) and !empty($_POST['primerNombre']) and !empty($_POST['primerApellido'])
-            and !empty($_POST['direccion'])and !empty($_POST['email'])){
-            $identi=limpiar($_POST['identi']);
-            $pNombre=limpiar($_POST['primerNombre']);
-            $sNombre=limpiar($_POST['segundoNombre']);
-            $pApellido=limpiar($_POST['primerApellido']);
-            $sApellido=limpiar($_POST['segundoApellido']);
-            $fecha=$_POST['fecha'];
-            $sexo = $_POST['sexo'];
-            $direc=limpiar($_POST['direccion']);
-            $email=limpiar($_POST['email']);
-            $estCivil = $_POST['estCivil'];
-            $nacionalidad = $_POST['nacionalidad'];
+                and !empty($_POST['email']))
+            {
+                $identi=limpiar($_POST['identi']);
+                $pNombre=limpiar($_POST['primerNombre']);
+                $sNombre=limpiar($_POST['segundoNombre']);
+                $pApellido=limpiar($_POST['primerApellido']);
+                $sApellido=limpiar($_POST['segundoApellido']);
+                $fecha=$_POST['fecha'];
+                $sexo = $_POST['sexo'];
+                $dir = NULL;
+                $email=limpiar($_POST['email']);
+                $estCivil = $_POST['estCivil'];
+                
+                $_SESSION["ESTADO_CIVIL"] = $estCivil;
+                
+                $nacionalidad = $_POST['nacionalidad'];
+                
+                if(isset($_POST['direccion']))
+                {
+                    $direc = $_POST['direccion'];
+                }
 
 
             $gId = $_SESSION['Nidenti'];
             //Agregar ON UPDATE CASCADE, ON DELETE CASCADE A LA TABLA telefono.
-            mysql_query("UPDATE persona SET N_identidad = '$identi', Primer_nombre = '$pNombre', Segundo_nombre = '$sNombre', Primer_apellido = '$pApellido',
+            mysql_query("UPDATE persona SET Primer_nombre = '$pNombre', Segundo_nombre = '$sNombre', Primer_apellido = '$pApellido',
             Segundo_apellido = '$sApellido', Fecha_nacimiento = '$fecha', Sexo = '$sexo', Direccion = '$direc', Correo_electronico = '$email', Estado_Civil = '$estCivil', Nacionalidad = '$nacionalidad'
             WHERE N_identidad = '$gId'");
-
-            echo " Datos personales se han actualizado con éxito!";
+            
+            echo '<div id="resultado" class="alert alert-success">
+                    Datos personales se han actualizado con éxito
+                   </div>';
+        }
+        else if(!empty($_POST['intentoActualizar']) )
+        {
+            echo '  <div id="resultado" class="alert alert-danger">
+                    Faltan campos obligatorios para poder actualizar la información
+                    </div>';
         }
 ?>
     
@@ -71,6 +100,7 @@ session_start();
         $("#form").submit(function(e) {
             e.preventDefault();
             
+            
           if(validator()){
         data={
             identi:$('#identidad').val(),
@@ -83,7 +113,8 @@ session_start();
             direccion:$('#direccion').val(),
             email:$('#email').val(),
             estCivil:$('#estCivil').val(),
-            nacionalidad:$('#nacionalidad').val()
+            nacionalidad:$('#nacionalidad').val(),
+            intentoActualizar: true
         };
 
         $.ajax({
@@ -98,8 +129,46 @@ session_start();
         });
         return false;
           }
-            
+          
+          
+          
+          
+          
+          
         });
+        
+        
+          $("#form2").submit(function(e) {
+            e.preventDefault();
+            
+          if(validator()){
+        data2={
+            identi:$('#identidad').val(),
+            identi2:$('#identidadEditar').val(),
+            tipoProcedimiento:"editarID"
+        
+        };
+
+        $.ajax({
+            async: true,
+            type: "POST",
+            dataType: "html",
+            contentType: "application/x-www-form-urlencoded",
+            beforeSend: inicioEnvioAct,
+            success: editarID,
+            timeout: 4000,
+            error: problemas
+        });
+        return false;
+          }
+          
+          
+          
+          
+          
+          
+        });
+        
     });
 
  
@@ -114,6 +183,12 @@ session_start();
     function llegadaActualPersona()
     {
         $("#contenedor").load('pages/recursos_humanos/cv/actualizar/personaActualizar.php',data);
+    }
+    
+    function editarID()
+    {
+        $('body').removeClass('modal-open');
+        $("#contenedor").load('pages/recursos_humanos/cv/actualizar/personaActualizar.php',data2);
     }
 
     function problemasAct()
@@ -231,6 +306,26 @@ session_start();
     <head></head>
     <body>
         
+    <?php
+ 
+  if(isset($codMensaje) and isset($mensaje)){
+    if($codMensaje == 1){
+      echo '<div class="alert alert-success">';
+      echo '<a href="#" class="close" data-dismiss="alert">&times;</a>';
+      echo '<strong>Exito! </strong>';
+      echo $mensaje;
+      echo '</div>';
+    }else{
+      echo '<div class="alert alert-danger">';
+      echo '<a href="#" class="close" data-dismiss="alert">&times;</a>';
+      echo '<strong>Error! </strong>';
+      echo $mensaje;
+      echo '</div>';
+    }
+  } 
+
+?>
+        
         
           <form role="form" id="form" method="post" class="form-horizontal" action="#">
                         <!-- .panel-heading -->
@@ -247,7 +342,10 @@ session_start();
                                                 <div class="col-lg-8">
                                                         <div class="form-group">
                                                             <label class="col-sm-5 control-label"><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> Número de Identidad</label>
-                                                            <div class="col-sm-7"><input id="identidad" class="form-control" name="identidad"  value="<?php echo "$id"; ?>" required pattern="[0-9]{4}[\-][0-9]{4}[\-][0-9]{5}"></div>
+                                                            <div class="col-sm-7"><input id="identidad" class="form-control" name="identidad"  value="<?php echo "$id"; ?>" disabled="TRUE">
+                                                                <a  id="actualizarID"  class="ActualizarIDB btn btn-primary" data-toggle="modal" data-target="#compose-modal">Editar</a> 
+                                                            </div>
+                                                           
                                                         </div>
                                                         <div class="form-group">
                                                             <label class="col-sm-5 control-label"><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> Primer nombre</label>
@@ -290,18 +388,31 @@ session_start();
                                                             <label class="col-sm-5 control-label"><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> Estado civil</label>
                                                             <div class="col-sm-7"><select class="form-control" id="estCivil" name="estCivil">
                                                                     <?php
-                                                                echo '"<option value="soltero"';
-                                                                if($estCivil == "Soltero") echo "selected";
-                                                                echo '>Soltero</option>
-                                                                <option value="casado"';
-                                                                if($estCivil == "Casado") echo "selected";
-                                                                echo '>Casado</option>
-                                                                <option value="divorciado"';
-                                                                if($estCivil == "Divorciado") echo "selected";
-                                                                echo '>Divorciado</option>
-                                                                <option value="viudo"';
-                                                                if($estCivil == "Viudo") echo "selected";
-                                                                echo'>Viudo</option>';
+                                                                        echo '"<option value="soltero"';
+                                                                        
+                                                                    if($estCivil == "soltero") 
+                                                                    {
+                                                                        echo ' selected="selected"';
+                                                                    }
+                                                                    echo '>Soltero</option>';
+                                                                    echo '<option value="casado"';
+                                                                    if($estCivil == "Casado") 
+                                                                    {
+                                                                        echo ' selected="selected"';
+                                                                    }
+                                                                    echo '>Casado</option>';
+                                                                    echo '<option value="divorciado"';
+                                                                    if($estCivil == "Divorciado") 
+                                                                    {
+                                                                        echo ' selected="selected"';
+                                                                    }
+                                                                    echo '>Divorciado</option>';
+                                                                    echo '<option value="viudo"';
+                                                                    if($estCivil == "Viudo") 
+                                                                    {
+                                                                        echo ' selected="selected"';
+                                                                    }
+                                                                    echo'>Viudo</option>';
                                                                 
                                                                         ?>
                                                                 </select>
@@ -338,7 +449,63 @@ session_start();
         
         
         
+              <div class="modal fade" id="compose-modal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+	  <form role="form" id="form2" name="form" action="#">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title"><i class="glyphicon glyphicon-floppy-disk"></i> Editar numero de identidad </h4>
+      </div>
+              <div class="modal-body">
+             
+                  
+                
+                                      <div class="form-group">
+                                        <label class="col-lg-5 control-label">Numero de identidad</label>
+                                        
+                                        <div class="col-lg-5"><input id="identidadEditar" class="form-control" name="identidadEditar"  value="<?php echo "$id"; ?>" placeholder="Ejemplo:0805-1689-19195" required pattern="[0-9]{4}[\-][0-9]{4}[\-][0-9]{5}">
+                                                               
+                                        </div>
+                                    
+                                  
+                                    
+                                     </div>
+                  
+                  <div id="resultadoID">
+                      
+                      
+                      
+                  </div>
+              
+                  
+                  
+                  
+    
+              </div>
+              <div class="modal-footer clearfix">
+            <button name="submit" id="submit" class="ModificarIDB btn btn-primary pull-left"><i class="glyphicon glyphicon-pencil"></i> Modificar</button>
+          </div>
+                
+                    
+          </form>
+    
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+   </div>
+        
+        
+        
         
     </body>
     
 </html>
+
+<script type="text/javascript">
+$(document).ready(function() {
+    setTimeout(function() {
+        $("#resultado").fadeOut(1500);
+    },3000);
+	
+});
+</script>

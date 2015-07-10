@@ -37,7 +37,7 @@ if(isset($_POST["tipoProcedimiento"])){
 }
 
 $enlace = mysql_connect('localhost', 'root', '');
-mysql_select_db("sistema_ciencias_juridicas", $enlace);
+mysql_select_db("ccjj", $enlace);
 
 
 if(isset($_POST['codigo']) and $existe==FALSE ){
@@ -488,7 +488,7 @@ HTML;
                                          <label  class="col-lg-6 control-label" >Codigo Empleado :</label>
                                               
                                         <div class="col-lg-6">
-                                        <input class="form-control" name="cod_empleado" id="cod" value="<?php echo$codigoE ;?>"  required> 
+                                            <input class="form-control" name="cod_empleado" id="cod" value="<?php echo$codigoE ;?>"  disabled="true"> 
                                         </div>
                                          </div>
                                     </div>
@@ -543,14 +543,15 @@ HTML;
                                 </br>
                                 
                                    
-                                <div class="col-xs-12">
+                                <div class="col-lg-12">
                              <label ><strong>Observacion :</strong></label> 
-                                </div>
-                                
-                             <div class="form-group">
+                                                          <div class="form-group">
                                   
                                         <textarea class="form-control" name="comentarios" rows="3"  id="obs" ><?php echo $obsE;  ?></textarea>
                              </div>
+                                </div>
+                                
+
                                
                                
   

@@ -16,7 +16,7 @@ if (isset($_POST['titulo'])) {
 }
 ?>
 <!--mysql_connect("localhost","root",""); 
-mysql_select_db("sistema_ciencias_juridicas"); -->
+mysql_select_db("ccjj"); -->
 
 
 <!DOCTYPE html>

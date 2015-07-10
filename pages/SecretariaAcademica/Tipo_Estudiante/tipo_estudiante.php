@@ -1,8 +1,7 @@
-
 <div class="container">
   <div class="Row">
     <div class="col-md-6">
-      <form>
+      <form name="formTE" method="POST" action= "pages/SecretariaAcademica/Tipo_Estudiante/tipoestudiantePL.php">
           <div class="row">
             <div class="col-lg-12">
                 <h1 class="page-header">Modificar el tipo de estudiante</h1>
@@ -12,7 +11,7 @@
             <div class="panel-body">
                 <div class="form-group">
                   <label >Número de Identidad</label>
-                  <input type="text" autofocus class="form-control" id="identidad">
+                  <input type="text" autofocus class="form-control" name="identidad" placeholder="Ejemplo:0000-0000-00000" required pattern="[0-9]{4}[\-][0-9]{4}[\-][0-9]{5}">
                 </div>
                 <div class="form-group">
                   <label>Nombre</label>
@@ -29,7 +28,7 @@
                 </select>
                 </div>
                 <button type="submit" class="btn btn-default">Guardar</button>
-                <button type="submit" class= "btn btn-default">Cancelar</button>
+                <button type="button" class= "btn btn-default">Cancelar</button>
             </div>
           </div>
       </form>

@@ -29,32 +29,41 @@ include($maindir."conexion/config.inc.php");
 	    $fNac = $_POST['fecha'];
 	    $sexo = $_POST['sexo'];
 	    $tel = $_POST['telefono'];
-	    $direc = $_POST['ciudadNatal'];
+	    $direc = $_POST['direccion'];
 	    $email = $_POST['email'];
 	    $estCivil = $_POST['estCivil'];
 	    $nacionalidad = $_POST['nacionalidad'];
+      $nempleado = $_POST['nempleado'];
       
-       $stmt = $db->prepare("CALL SP_REGISTRAR_DOCENTE(?,?,?,?,?,?,?,?,?,?,?,?,?,?,@mensaje,@codMensaje)");
+       $stmt = $db->prepare("CALL SP_REGISTRAR_DOCENTE(?,?,?,?,?,?,?,?,?,?,?,?,@mensajeError)");
 		      //Introduccion de parametros
           $stmt->bindParam(1, $identi, PDO::PARAM_STR); 
-
-
-          // 
+          $stmt->bindParam(2, $pNombre, PDO::PARAM_STR);
+          $stmt->bindParam(3, $sNombre, PDO::PARAM_STR); 
+          $stmt->bindParam(4, $pApellido, PDO::PARAM_STR); 
+          $stmt->bindParam(5, $sApellido, PDO::PARAM_STR); 
+          $stmt->bindParam(6, $fNac, PDO::PARAM_STR); 
+          $stmt->bindParam(7, $sexo, PDO::PARAM_STR); 
+          $stmt->bindParam(8, $direc, PDO::PARAM_STR); 
+          $stmt->bindParam(9, $estCivil, PDO::PARAM_STR); 
+          $stmt->bindParam(10, $nacionalidad, PDO::PARAM_STR);
+          $stmt->bindParam(11, $email, PDO::PARAM_STR);
+          $stmt->bindParam(12, $nempleado, PDO::PARAM_STR);   
+         
        $stmt->execute();
-       $output = $db->query("select @mensaje, @codMensaje")->fetch(PDO::FETCH_ASSOC);
+       $output = $db->query("select @mensajeError")->fetch(PDO::FETCH_ASSOC);
       //var_dump($output);
-       $mensaje = $output['@mensaje'];
-       $codMensaje = $output['@codMensaje'];
-          // realizamos la consulta
+       $mensaje = $output['@mensajeError'];
+       $codMensaje = 0;
+       
     
 
     }catch(PDOExecption $e){
-      $mensaje = 'error al ingresar el registro o registro actualmente existente';
+      //$mensaje = 'error al ingresar el registro o registro actualmente existente';
       $codMensaje = 0;
     }
     
-  if(isset($codMensaje) and isset($mensaje)){
-    if($codMensaje == 1){
+    if(is_null($mensaje)){
       echo '<div class="alert alert-success alert-succes">
         <a href="#" class="close" data-dismiss="alert">&times;</a>
         <strong> Exito! </strong>'.$mensaje.'</div>';
@@ -63,5 +72,4 @@ include($maindir."conexion/config.inc.php");
         <a href="#" class="close" data-dismiss="alert">&times;</a>
         <strong> Error! </strong>'.$mensaje.'</div>';
     }
-  }
  ?>

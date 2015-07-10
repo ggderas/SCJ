@@ -41,7 +41,7 @@ if(!isset( $_SESSION['user_id'] ))
                         </a>
                         <ul class="list-unstyled collapse in" id="userMenu">
                           <li>
-                            <a id="RegistroEstudiante" href="#"><i class="glyphicon glyphicon-edit"></i>Registro de Estudiantes</a>
+                            <a id="RegistroEstudiante" href="#"><i class="glyphicon glyphicon-edit"></i>Registro de estudiantes</a>
                           </li>
                           <li>
                             <a id="TipoEstudiante"  href="#"><i class="fa fa-user fa-fw"></i>Modificar el tipo Estudiante</a>
@@ -49,11 +49,11 @@ if(!isset( $_SESSION['user_id'] ))
                         </ul>
                     </li>
                     <li class="nav-header"> <a href="#" data-toggle="collapse" data-target="#userMenu2">
-                      <h5><i class="fa fa-users "></i>Gestión de Solicitudes<i class="glyphicon glyphicon-chevron-down"></i></h5>
+                      <h5><i class="fa fa-users "></i>Gestión de solicitudes<i class="glyphicon glyphicon-chevron-down"></i></h5>
                       </a>
                         <ul class="list-unstyled collapse in" id="userMenu2">     
-                            <li><a id="nuevaSolicitud" href="#"><i class="fa fa-suitcase"></i>Nueva solicitud</a></li>
-                            <li><a id="SolicitudEstudiante" href="#"><i class="fa fa-user fa-fw"></i>Solicitud estudiante</a></li> 
+                            <li><a id="nuevaSolicitud" href="#"><i class="fa fa-suitcase"></i>Tipos de solicitudes</a></li>
+                            <li><a id="SolicitudEstudiante" href="#"><i class="fa fa-user fa-fw"></i>Solicitus</a></li> 
                         </ul>
                     </li>
                     <li id = "BusquedaAvanzada" class="nav-header"> <a href="#" data-toggle="collapse" data-target="#userMenu2">

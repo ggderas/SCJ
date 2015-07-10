@@ -50,7 +50,7 @@ $rec = mysql_query($consulta);
 
 
 <!--mysql_connect("localhost","root",""); 
-mysql_select_db("sistema_ciencias_juridicas"); -->
+mysql_select_db("ccjj"); -->
 
 
 <!DOCTYPE html>
@@ -139,6 +139,7 @@ mysql_select_db("sistema_ciencias_juridicas"); -->
                 if(validator()){
             
              codE=$("#codEmple").val();
+              
                  
                 // alert(codE);
                 // alert(y);
@@ -156,6 +157,7 @@ mysql_select_db("sistema_ciencias_juridicas"); -->
                     type: "POST",
                     dataType: "html",
                     contentType: "application/x-www-form-urlencoded",
+                   
                     beforeSend: inicioEnvioXgrupo,
                     success: insertarEmpleadoGrupo,
                     timeout: 4000,

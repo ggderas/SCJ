@@ -8,7 +8,6 @@
 
     $("#SecretariaAcademica").click(function(event) {
       event.preventDefault();
-      alert("entro");
           
       $("#div_contenido").load("pages/SecretariaAcademica/SecrerariaAcademica.php");
       });
@@ -33,15 +32,15 @@
 
     $("#SolicitudEstudiante").click(function(event) {
       event.preventDefault();
-      alert("Entro");
-      $("#contenedor").load(// Pantalla para ingresar una solicitud por estudiante
+      
+      $("#contenedor").load("pages/SecretariaAcademica/NuevaSolicitud/nuevaSolicitud.php"
                             );
       }); 
 
     $("#BusquedaAvanzada").click(function(event) {
       event.preventDefault();
-      alert("Entro");
-      $("#contenedor").load(// Pantalla para Hacer una busqueda avanzada
+      $("#contenedor").load( "pages/SecretariaAcademica/BusquedaAvanzada/BusquedaAvanzada.php"
                             );
       });   
 });
+

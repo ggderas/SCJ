@@ -1,6 +1,6 @@
 <?php
 
-//include '../Datos/conexion.php';
+include '../Datos/conexion.php';
 
      require_once('funciones.php');
 	
@@ -9,11 +9,13 @@
 	$id='';
 	$pais='';
 	
-	$enlace = mysql_connect('localhost', 'root', '');
-        mysql_select_db("sistema_ciencias_juridicas", $enlace);
-	
+        $enlace = mysql_connect('localhost', 'root', '');
+        mysql_select_db("ccjj", $enlace);
+        
+       
 	  if (isset($_POST['idpersona'])) 
     {
+              
 	  $id=$_POST['idpersona'];
 	  $pa = mysql_query("SELECT * FROM persona WHERE N_identidad='".$id."'");
             

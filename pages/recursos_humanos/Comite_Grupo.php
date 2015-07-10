@@ -109,7 +109,7 @@ and open the template in the editor.
         <div id="contenedor2" >
             <?php
             $root = \realpath($_SERVER["DOCUMENT_ROOT"]);
-            include "Datos\cargarComite.php";
+            include "$root\SistemaCienciasJuridicas\Datos\cargarComite.php";
             ?>
 
 

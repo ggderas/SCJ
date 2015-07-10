@@ -19,9 +19,9 @@
                         "email":$('#correo').val(),
                         "estCivil":$('#estCivil').val(),
                         "nacionalidad":$('#nacionalidad').val(),
-                        "ciudadNatal": $('#ciudadNatal').val()
+                        "direccion": $('#direccion').val(),
+                        "nempleado": $('#nempleado').val()
                     };
-                 alert(data1);   
                 $.ajax({
                     async: true,
                     type: "POST",
@@ -94,7 +94,6 @@
                     <div class="panel-body">
                         <h1>Información Personal de Docentes</h1></br>
                         <div class="panel-group" id="accordion">
-                                <h1>Nuevo Docente</h1></br>
                                 <div class="panel-group" id="accordion">
                                     <div class="panel panel-primary">
                                         <div class="panel-heading">
@@ -107,6 +106,10 @@
                                                 <div class="form-group" id="identi">
                                                     <label class="col-sm-5 control-label"><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> Número de Identidad</label>
                                                     <div class="col-sm-7"><input id="identidad" class="form-control" name="identidad" placeholder="Ejemplo:0000-0000-00000" required pattern="[0-9]{4}[\-][0-9]{4}[\-][0-9]{5}"></div>
+                                                </div>
+                                                <div class="form-group" id="empleado">
+                                                    <label class="col-sm-5 control-label"><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> Número de empleado</label>
+                                                    <div class="col-sm-7"><input type = "number" id="nempleado" class="form-control" name="nempleado"></div>
                                                 </div>
                                                 <div class="form-group" id="primerN">
                                                     <label class="col-sm-5 control-label"><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> Primer nombre</label>
@@ -145,9 +148,9 @@
                                                     <label class="col-sm-5 control-label"><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> Nacionalidad</label>
                                                     <div class="col-sm-7"><input id="nacionalidad" class="form-control" name="nacionalidad" required></div>
                                                 </div>
-                                                <div class="form-group" id="cnatal">
-                                                    <label class="col-sm-5 control-label"> Ciudad Natal</label>
-                                                    <div class="col-sm-7"><input id="ciudadNatal" class="form-control" name="ciudadNatal"></div>
+                                                <div class="form-group" id="direc">
+                                                    <label class="col-sm-5 control-label"> Dirección</label>
+                                                    <div class="col-sm-7"><input id="direccion" class="form-control" name="ciudadNatal"></div>
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="col-sm-5 control-label" data-link-field="dtp_input2"><strong><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> Fecha de Nacimiento</strong></label>
