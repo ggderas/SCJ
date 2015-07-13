@@ -30,7 +30,7 @@ $outp = "[";
 $outp .="}]";
 }
 else
-{
+{    
   $outp = "[";
 
    
@@ -38,6 +38,8 @@ else
     $outp .= '"descripcion":"",';
 $outp .= '"existe":"0"';
 $outp .="}]";  
+
+
     
 }
 

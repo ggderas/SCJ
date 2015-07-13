@@ -215,7 +215,7 @@ require_once('../../../../Datos/conexion.php');
                                         <option value=-1>Ninguna</option>
 
                                         <?php
-                                        $consulta_mysql = "SELECT distinct nombre_titulo FROM `estudios_academico` inner join tipo_estudio on estudios_academico.ID_Tipo_estudio=tipo_estudio.ID_Tipo_estudio where tipo_estudio.tipo_estudio='licenciatura'";
+                                        $consulta_mysql = "SELECT distinct Nombre_titulo FROM `estudios_academico` inner join tipo_estudio on estudios_academico.ID_Tipo_estudio=tipo_estudio.ID_Tipo_estudio where tipo_estudio.tipo_estudio='licenciatura'";
                                         $resultado3 = mysql_query($consulta_mysql);
                                         //$rec=mysql_fetch_array($resultado3);
 

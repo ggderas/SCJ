@@ -1,0 +1,106 @@
+body {
+	background-color: #FAFAFA;
+	background-size: 90;
+}
+
+.card {
+	background-color:#F7F7F7;
+	box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.5);
+	width: 274px;
+	padding: 40px;
+    padding-top: 40px;
+    padding-right: 40px;
+    padding-bottom: 40px;
+    padding-left: 40px;
+
+    margin :auto;
+}
+
+.content{
+
+	padding: 0px 44px;
+	padding-bottom: 100px;
+}
+
+#banner{
+
+	width: 100%;
+	color: #555;
+	font-family: Arial;
+	font-size: 38px;
+	margin-bottom: 30px;
+	height: 50px;
+	text-align: center;
+}
+
+#username{
+
+	font-size: 16px;
+	font-weight: bold;
+	text-align: center;
+	margin: 10px 0px 0px;
+	min-height: 1em;
+	direction: ltr;
+	font-family: 'Open Sans';
+}
+
+#passwd{
+	width: 100%;
+	direction: ltr;
+	height: 20px;
+	line-height: 20px;
+	font-size: 16px;
+	margin: 10px 0px 0px;
+	font-family: 'Open Sans';
+}
+
+.loginbox{
+
+	width: 274px;
+    padding: 40px;
+    padding-top: 40px;
+    padding-right: 40px;
+    padding-bottom: 40px;
+    padding-left: 40px;
+}
+
+#usertext{
+
+	width: 100%;
+	direction: ltr;
+	height: 20px;
+	line-height: 20px;
+	font-size: 16px;
+	margin: 10px 0px 0px;
+}
+
+#entrar {
+	width: 100%;
+	font-family: 'Open Sans';
+	font-size: 16px;
+	font-weight: bold;
+	display: block;
+	margin-bottom: 10px;
+	position: relative;
+	box-sizing: border-box;
+	margin: 10px 0px 0px;
+	height: 30px;
+}
+
+.submit {
+	border: 1px solid #3079ED;
+	color: #FFF;
+	text-shadow: 0px 1px rgba(0, 0, 0, 0.1);
+	background-color: #4D90FE;
+	background-image: -moz-linear-gradient(center top , #4D90FE, #4787ED);
+}
+
+.imagen_perfil {
+
+	width: 120px;
+	height: 120px;
+	margin: 0px auto 10px;
+	display: block;
+	border-radius: 50%;
+	padding-top: 10px;	
+}

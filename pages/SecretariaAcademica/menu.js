@@ -21,7 +21,7 @@
     $("#TipoEstudiante").click(function(event) {
       event.preventDefault();
       
-      $("#contenedor").load( "pages/SecretariaAcademica/Tipo_Estudiante/tipo_estudiante.php");
+      $("#contenedor").load( "pages/SecretariaAcademica/Tipo_Estudiante/TipoEstudiante.php");
       }); 
 
     $("#nuevaSolicitud").click(function(event) {
@@ -41,6 +41,13 @@
       event.preventDefault();
       $("#contenedor").load( "pages/SecretariaAcademica/BusquedaAvanzada/BusquedaAvanzada.php"
                             );
-      });   
+      });
+
+    $("#ManejoDocuementos").click(function(event) {
+      event.preventDefault();
+      $("#contenedor").load( "pages/SecretariaAcademica/Manejo_Documentos/manejo_Documentos.php"
+                            );
+      });
+
 });
 

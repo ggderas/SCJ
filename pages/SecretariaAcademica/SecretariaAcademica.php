@@ -53,10 +53,14 @@ if(!isset( $_SESSION['user_id'] ))
                       </a>
                         <ul class="list-unstyled collapse in" id="userMenu2">     
                             <li><a id="nuevaSolicitud" href="#"><i class="fa fa-suitcase"></i>Tipos de solicitudes</a></li>
-                            <li><a id="SolicitudEstudiante" href="#"><i class="fa fa-user fa-fw"></i>Solicitus</a></li> 
+                            <li><a id="SolicitudEstudiante" href="#"><i class="fa fa-user fa-fw"></i>Solicitudes</a></li> 
                         </ul>
                     </li>
-                    <li id = "BusquedaAvanzada" class="nav-header"> <a href="#" data-toggle="collapse" data-target="#userMenu2">
+                    <li id = "ManejoDocuementos" class="nav-header"> <a href="#" data-target="#userMenu2">
+                      <h5><i class="glyphicon glyphicon-file"></i>Manejo de documentos</h5>
+                      </a>
+                    </li>
+                    <li id = "BusquedaAvanzada" class="nav-header"> <a href="#" data-target="#userMenu2">
                       <h5><i class="glyphicon glyphicon-search"></i>Busqueda vanzada</h5>
                       </a>
                     </li>

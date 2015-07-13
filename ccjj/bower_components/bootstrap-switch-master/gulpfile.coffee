@@ -52,7 +52,7 @@ dest =
     markup: paths.base
 
 server =
-  host: 'localhost'
+  host: 'mysqlv115'
   port: 3000
 
 banner = """

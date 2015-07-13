@@ -1,216 +1,210 @@
+<script>
 
-<!-- ESTO TAMBIEN-->
-<?php
 
-$maindir = "../../../";
- 
-  require_once($maindir."funciones/check_session.php");
+$( document ).ready(function() 
+{
+    obtenerTipoSolicitud();
+});
 
-  require_once($maindir."funciones/timeout.php");
-  
-   if(!isset( $_SESSION['user_id'] ))
-  {
-    header('Location: '.$maindir.'login/logout.php?code=100');
-    exit();
+$('#filtrar').click(function(event) {
+   event.preventDefault();
+   
+   var datos =  {
+      "nIdentidad": $('#nIdentidad').val(),
+      "fecha":$('fecha').val(),
+      "tipoSolicitud":$('cmbTipoSolicitud').val()
+   };
+    $.ajax({
+        async: true,
+        type: "POST",
+        // dataType: "html",
+        // contentType: "application/x-www-form-urlencoded",
+        url: "pages/SecretariaAcademica/BusquedaAvanzada/ajax_busquedaAvanzada.php",
+        data: datos,
+        success: function(data){
+            var response = JSON.parse(data);
+            var options = '';
+
+            for (var index = 0;index < response.length; index++) 
+            {
+               options += "<tr>" +
+                                "<td>" + response[index].numeroIdentidad + "</td>" +
+                                "<td>" + response[index].Nombre + "</td>" +
+                                "<td>" + response[index].numeroCuenta + "</td>" +
+                                "<td>" + response[index].indiceAcademico + "</td>" +
+                                "<td>" + response[index].tipoEstudiante + "</td>" +
+                                "<td>" + response[index].tipoSolicitud + "</td>" +
+                                "<td>" + response[index].fecha + "</td>" +                    
+                          "</tr>";
+            }
+
+            $('#cuerpoTabla').append(options);
+        },
+        timeout: 4000,
+        beforeSend: antesdemandar
+    });
+
+});
+
+function antesdemandar(){
+  var x = $("#notificaciones");
+  x.html('Cargando...');
+}
+
+
+// Habilita y deshabilita los inputs
+
+function cambiarEstadoInput(codigoInput)
+{
+    var htmlElement = document.getElementById(codigoInput);
+    
+    if(htmlElement.disabled)
+    {
+        htmlElement.disabled = false;
+    }
+    else
+    {
+        htmlElement.disabled = true;
+    }
+}
+
+
+function obtenerTipoSolicitud()
+{
+    var parametros  =
+    {
+        accion : 1
+    };
+    
+    $.ajax
+    ({
+      // mandamos estos el jason a la direcion especificada.
+        type : "POST",
+        url: "pages/SecretariaAcademica/BusquedaAvanzada/ajax_busquedaAvanzada.php",
+        data: parametros,
+        success: function(respuesta) // En esta recibimos el json enviado como respuesta en el formulario anterior.
+        {
+            var response = JSON.parse(respuesta);
+            var options = '';
+            
+            for (var index = 0;index < response.length; index++) 
+            {
+                options += '<option value="' + response[index].codigoTipoSolicitud
+                            + '">' + response[index].nombreTipoSolicitud + '</option>';
+            }
+            
+            $("#cmbTipoSolicitud").append(options);
+        }
+    });
+}
+
+</script>
+</script>
+
+<link href="css/datepicker.css" rel="stylesheet">
+<link href="css/prettify.css" rel="stylesheet">
+   
+<script src="js/prettify.js"></script>
+<script src="js/bootstrap-datepicker.js"></script>
+
+<script>
+    if (top.location != location) {
+    top.location.href = document.location.href ;
   }
-  
-?>
-<body>
+        $(function(){
+            window.prettyPrint && prettyPrint();
+            $('#txtFechaSolicitud').datepicker({
+                format: 'yyyy-mm-dd',
+                language: "es",
+                autoclose: true,
+                todayBtn: true
+            }).on('show', function() {
+                var zIndexModal = $('#myModal').css('z-index');
+                var zIndexFecha = $('.datepicker').css('z-index');
+                $('.datepicker').css('z-index',zIndexModal+1);
+            }).on('changeDate', function(ev){
+                $('#dp1').datepicker('hide');
+            });          
 
+        });
+</script>
 
-<div class="container-fluid">
-        <div class="row">
-            <div class="col-lg-12">
-                   <div align="left">
-                     <ul class="list-unstyled">
-                       <li  class="nav-header active"> <a id="SecretariAcademica" href="#"><i class="glyphicon glyphicon-home"></i> Inicio Secretaria Academica</a> </li>
-                     </ul>
+ <div class="panel panel-primary">
+   <div class="panel-heading">
+      <h4 class="panel-title">
+          <label><span class="glyphicon glyphicon-file" aria-hidden="true"></span> Busqueda avanzada</label>
+      </h4>
+   </div>
+   <div class = "panel-body">
+   <br>
+   <br>
+   <div id = "notificaciones"></div>
+<section onload="">
+  <div class = "col-sm-12">
+    
+          <div class="row">
+              <div class="col-lg-3">
+                  <label>
+                      <input id = "nIdentidad" required pattern="[0-9]{4}[\-][0-9]{4}[\-][0-9]{5}" placeholder="Ejemplo:0000-0000-00000" onchange="cambiarEstadoInput('txtNumeroIdentidad')" type="checkbox"> Número de identidad
+                  </label>    
               </div>
-                <ul class="list-unstyled"><hr align="left">
-                   <li class="nav-header"> 
-                     <h5 align="left"><a href="#" data-toggle="collapse" data-target="#userMenu"><i class="fa fa-male fa-fw"></i>Gestión de Estudiantes<i class="glyphicon glyphicon-chevron-down"></i></a></h5>
-                        <div align="left">
-                          <ul class="list-unstyled collapse in" id="userMenu">
-                            <li>
-                              <a id="RegistroEstudiante" href="#"><i class="glyphicon glyphicon-edit"></i>Registro de Estudiantes</a>
-                            </li>
-                            <li>
-                              <a id="TipoEstudiante"  href="#"><i class="fa fa-user fa-fw"></i>Tipo Estudiante</a>
-                            </li>
-                          </ul>
-                        </div>
-                   </li>
-                    <li class="nav-header"> 
-                      <h5 align="left"><a href="#" data-toggle="collapse" data-target="#userMenu2"><i class="fa fa-users "></i>Gestión de Solicitudes<i class="glyphicon glyphicon-chevron-down"></i></a></h5>
-                        <div align="left">
-                          <ul class="list-unstyled collapse in" id="userMenu2">     
-                            <li><a id="nuevaSolicitud" href="#"><i class="fa fa-suitcase"></i>Nueva solicitud</a></li>
-                            <li><a id="SolicitudEstudiante" href="#"><i class="fa fa-user fa-fw"></i>Solicitud estudiante</a></li>
-                          </ul>
-                        </div>
-                    </li>
-                    <li id = "BusquedaAvanzada" class="nav-header"> 
-                      <h5 align="left"><a href="#" data-toggle="collapse" data-target="#userMenu2"><i class="glyphicon glyphicon-search"></i>Busqueda vanzada</a></h5>
-                    </li>
-                </ul>
-            </div>
-
-             <div class="col-sm-9">
-              <div class="col-md-12">
-                <div id="contenedor" class="content-panel">
-                  <div class="col-lg-12">                  </div>
-                  <div id="wrapper">
-                    <div align="left">
-                      <!-- Patanlla principal de la secretaria academica -->
-                      </div>
-                  </div>                       
+              <div class="col-lg-9">
+                  <input pattern="[0-9]{4}[\-][0-9]{4}[\-][0-9]{5}" placeholder="Ejemplo:0000-0000-00000" disabled="true" class="form-control" id="txtNumeroIdentidad" type="text">        
+              </div>      
+          </div>
+          <br/>
+          <div class="row">
+                <div class="col-lg-3">
+                    <label>
+                        <input id= "fecha" onchange="cambiarEstadoInput('txtFechaSolicitud')" type="checkbox"> Fecha de solicitud
+                    </label>    
                 </div>
+                <div class="col-lg-9">
+                    <input disabled="true" data-inputmask="'alias': 'dd/mm/yyyy'" format="yyyy-mm-dd" class="form-control" id="txtFechaSolicitud" placeholder="yyyy-mm-dd" type="date">        
+                </div>      
+          </div> 
+          <br/>
+          <div class="row">
+              <div class="col-lg-3">
+                  <label>
+                      <input id = "tipoSolicitud"  onchange="cambiarEstadoInput('cmbTipoSolicitud')" type="checkbox"> Tipo de solicitud
+                  </label>    
               </div>
-            </div>
-        </div>
+              <div class="col-lg-9">
+                <div class="form-group">
+                    <select disabled="true" class="form-control" id="cmbTipoSolicitud">
+                        <option value="NULL">Seleccione una opción</option>
+                    </select>
+                </div>          
+              </div>      
+          </div>
+          <p align="right">
+            <button id="filtrar" class="ActualizarB btn btn-primary">Filtrar</button>
+          </p>
+
+        <!-- Creamos la tabla para mostrar las solicitudes -->
+      <div class="box-body table-responsive ">
+         <table id = "tablaBusquedaAvanzada" class='table table-bordered table-striped display' cellspacing="0" >
+            <thead >
+              <tr>
+                <th>Identidad</th>
+                <th>Nombre</th>
+                <th>Nº Cuenta</th>
+                <th>Indice Academico</th>
+                <th>Tipo Estudiante</th>
+                <th>Tipo de solicitud</th>
+                <th>Fecha de solicitud</th>
+              </tr>
+            </thead>
+            <tbody id = "cuerpoTabla">
+              
+            </tbody>
+          </table>
       </div>
-      
-<div>
-<fieldset>
-<legend><strong>Busqueda Avanzada</strong></legend>
-<form id="form1" name="form1" method="post" action="">
-  <p>
-    <label></label>
-    <span class="Estilo4">
-    <span class="Estilo6">
-    
-    </span>    </span><br/>
-    <br/>
-    <label>
-    <input name="tbuscar" type="text" id="tbuscar" value="" size="60" hspace="20" />
-    <input type="submit" name="Buscar" id="Buscar" value="Buscar"  hspace="40" vspace=" 10" />
-    
-    <br/>
-    </label>
-</p>
-  <p>
-    <label></label>
-    <label></label>
-    <label></label>
-  
-    <span class="Estilo2">
-    <label><strong>Elegir</strong></label>
-  <strong>    una Opción de busqueda  </strong></span></p>
-
-    <span class="Estilo2">
-    <label></label>
-    <label></label>
-    </span>
-    <table width="842" border="0">
-    <tr>
-      <th width="176" class="Estilo2" scope="row"><label></label>
-          <label> </label>
-          <div align="left">
-            <input type="checkbox" name="tipo1" id="tipo1" />
-            Tipo de Solicitud</div>
-        <label> </label></th>
-      <td width="247" class="Estilo2"><strong>
-        <label>
-        <input type="checkbox" name="tipo2" id="tipo2" />
-        Estudiante de Pregrado</label>
-      </strong></td>
-      <td width="195" class="Estilo2"><strong>
-        <label>
-        <input type="checkbox" name="indice" id="indice" />
-        Indice Academico</label>
-      </strong></td>
-      <td width="206" class="Estilo2"><strong>
-        <label></label>
-        <label>
-        <input type="checkbox" name="fecha" id="fecha" />
-          Fecha de Solicitud</label>
-      </strong></td>
-    </tr>
-    <tr>
-      <th class="Estilo2" scope="row"><div align="left">
-          <input type="checkbox" name="Tipo de Solicitud4" id="Tipo de Solicitud4" />
-        Nº de Solicitud </div></th>
-      <td class="Estilo2"><strong>
-        <label>
-        <input type="checkbox" name="tipo4" id="tipo4" />
-        Estudiante de Postgrado</label>
-      </strong></td>
-      <td class="Estilo2"><strong>
-        <label>
-        <input type="checkbox" name="mension" id="mension" />
-        </label>
-        Mención
-        <label> Honorifica</label>
-      </strong></td>
-      <td class="Estilo2">&nbsp;</td>
-    </tr>
-  </table>
-  <p class="Estilo2">&nbsp;</p>
-  <p class="Estilo2"><strong>Datos generados por la busqueda:</strong></p>
-  <table width="907" height="202" border="1">
-    <tr>
-      <th width="101" scope="row"><div align="center" class="Estilo1">Nombre</div></th>
-      <td width="106"><div align="center" class="Estilo1">Apellidos</div></td>
-      <td width="141"><div align="center" class="Estilo1">Nº Identidad</div></td>
-      <td width="193"><div align="center" class="Estilo1">Tipo de Estudiante</div></td>
-      <td width="188"><div align="center" class="Estilo1">Indice Academico</div></td>
-      <td width="138"><div align="center" class="Estilo1">Titulo</div></td>
-    </tr>
-    <tr>
-      <th scope="row">&nbsp;</th>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-    </tr>
-    <tr>
-      <th scope="row">&nbsp;</th>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-    </tr>
-    <tr>
-      <th scope="row">&nbsp;</th>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-    </tr>
-    <tr>
-      <th scope="row">&nbsp;</th>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-    </tr>
-    <tr>
-      <th scope="row">&nbsp;</th>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-    </tr>
-  </table>
-
- <br />
-    <br />
-
-  <div  align= "center" > 
-    <div align="right">
-      <input type="submit" name="button" id="button" value="Generar Reporte" a/>
     </div>
+    <button type="submit" id="CrearPDF" class="ActualizarB btn btn-primary">Generar reporte</button>
+  </section>
   </div>
-    <br />
-    <br />
-  </p>
-</form>
-</fieldset>
 </div>
-</body>
-</html>
+
+

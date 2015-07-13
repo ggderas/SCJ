@@ -1,21 +1,33 @@
-<?php
+<?php 
+	//Replace the below connection parameters to fit your environment
+	$host = 'mysqlv115'; 
+	$dbname = 'ccjj';
+	$user = 'ddvderecho';
+	$pass = 'DDVD3recho';
 
-$maindir = "../../../";
-include($maindir."conexion/config.inc.php");  
+	//conexion a la base de datos
+	$connection = mysqli_connect($host, $user, $pass, $dbname);
+	
+	$Nid = NULL;
+	//Se recupera valor enviado
+	if(isset($_POST['Identidad']))
+	{
+		$Nid = $_POST['Identidad'];
+	}
 
-	try{
-
-		$Nid= $_POST['identidad'];
-		echo $Nid;
-		$stmt = $db->prepare("CALL SP_OBTENER_INFORMACION_ESTUDIANTE(?,@mensajeError)");
-		//Introduccion de parametros
-		$stmt->bindParam(1, $Nid, PDO::PARAM_STR); 
-		$stmt->execute();
-		$output = $db->query("select @mensajeError")->fetch(PDO::FETCH_ASSOC);
-		//var_dump($output);
-		$mensaje = $output['@mensajeError'];
-
-    }catch(PDOExecption $e){
-      $mensaje = 'error al encontrar estudiante';
-    }
- ?>
+	$sentencia =  $connection->stmt_init();
+	if ($sentencia->prepare("CALL SP_OBTENER_INFORMACION_ESTUDIANTE(?, @pcMensajeError)")) 
+	{
+		/* vincular los parámetros para los marcadores */
+		$sentencia->bind_param("s", $Nid);
+		/* ejecutar la consulta */
+		$sentencia->execute();
+		/* vincular las variables de resultados */
+		$sentencia->bind_result($nombre, $tipo);
+		/* obtener el valor */
+		$sentencia->fetch();
+		/* cerrar la sentencia */
+		$sentencia->close();
+		echo $nombre."/".$tipo;
+	}
+?>

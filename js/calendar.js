@@ -61,7 +61,7 @@ if(!String.prototype.formatNum) {
 		// Path to templates should end with slash /. It can be as relative
 		// /component/bootstrap-calendar/tmpls/
 		// or absolute
-		// http://localhost/component/bootstrap-calendar/tmpls/
+		// http://mysqlv115/component/bootstrap-calendar/tmpls/
 		tmpl_path:          'tmpls/',
 		tmpl_cache:         true,
 		classes:            {

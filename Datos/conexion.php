@@ -1,6 +1,6 @@
 <?php 
 $conectar = new mysqli('localhost','root','','ccjj');
-//$cn = mysql_connect("localhost","root","");
+//$cn = mysql_connect("mysqlv115","root","");
 //mysql_select_db("poa", $cn);
 
 $enlace = mysql_connect('localhost', 'root', '');

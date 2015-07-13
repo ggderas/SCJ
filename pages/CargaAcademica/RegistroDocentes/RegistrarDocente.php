@@ -54,8 +54,6 @@ include($maindir."conexion/config.inc.php");
        $output = $db->query("select @mensajeError")->fetch(PDO::FETCH_ASSOC);
       //var_dump($output);
        $mensaje = $output['@mensajeError'];
-       $codMensaje = 0;
-       
     
 
     }catch(PDOExecption $e){

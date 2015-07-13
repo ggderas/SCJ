@@ -4,12 +4,16 @@ require_once("../conexion/config.inc.php");
 $pcIdentidadEstudiante= $_POST['identidad'];
 $pcTipoSolicitud= $_POST['solicitud'];
 $pnCodigoPeriodo= $_POST['periodo'];
+$pcHimno=$_POST['himno'];
+$fecha=$_POST['fecha'];
 
 
-$consulta=$db->prepare("CALL SP_REGISTRAR_SOLICITUD(?,?,?,@pcMensajeError)");
+$consulta=$db->prepare("CALL SP_REGISTRAR_SOLICITUD(?,?,?,?,?,@pcMensajeError)");
 $consulta->bindParam(1, $pcIdentidadEstudiante, PDO::PARAM_STR);
 $consulta->bindParam(2, $pcTipoSolicitud, PDO::PARAM_STR);
 $consulta->bindParam(3, $pnCodigoPeriodo, PDO::PARAM_INT);
+$consulta->bindParam(4, $pcHimno, PDO::PARAM_BOOL);
+$consulta->bindParam(5, $fecha, PDO::PARAM_STR);
 
 $resultado=$consulta->execute();
 
@@ -19,7 +23,7 @@ $mensaje = $output['@pcMensajeError'];
 
 if ($mensaje == NULL)
 {
-    echo '<div id="resultado" class="alert alert-danger">
+    echo '<div id="resultado" class="alert alert-success">
     ' . 'Solicitud Guardada exitosamente'. '</div>';
 }
 else
@@ -39,7 +43,7 @@ else
 <script type="text/javascript">
 $(document).ready(function() {
     setTimeout(function() {
-        $("#resultado").fadeOut(1500);
+        $(" ").fadeOut(1500);
     },3000);
 	
 });
