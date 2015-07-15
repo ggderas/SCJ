@@ -1,18 +1,113 @@
 <script>
+    
+function generarReporte()
+{
+    
+  //Obtener los parámetros para filtar
+  var numeroIdentidad = null;
+  var fechaSolicitud = null;
+  var codigoTipoSolicitud = null;
 
+  var inputIdentidad = document.getElementById('txtNumeroIdentidad');
+  var inputFechaSolicitud = document.getElementById('txtFechaSolicitud');
+  var inputTipoSolicitud = document.getElementById('cmbTipoSolicitud');
 
-$( document ).ready(function() 
+  if(!inputIdentidad.disabled)
+  {
+    numeroIdentidad = $("#txtNumeroIdentidad").val();
+  }
+
+  if(!inputFechaSolicitud.disabled)
+  {
+    fechaSolicitud = $("#txtFechaSolicitud").val();
+  }
+
+  if(!inputTipoSolicitud.disabled)
+  {
+    codigoTipoSolicitud = $("#cmbTipoSolicitud").val();
+  }
+
+  if(inputIdentidad.disabled && inputFechaSolicitud.disabled && inputTipoSolicitud.disabled)
+  {
+    alert('Debe de proporcionar filtros para la búsqueda');
+    return;
+  }
+  
+  window.open('pages/SecretariaAcademica/BusquedaAvanzada/reporte_busquedaAvanzada.php');
+    
+}
+
+$( document ).ready(function()
 {
     obtenerTipoSolicitud();
 });
 
-$('#filtrar').click(function(event) {
+$('#filtrar').click(function(event) 
+{
+    
    event.preventDefault();
    
-   var datos =  {
-      "nIdentidad": $('#nIdentidad').val(),
-      "fecha":$('fecha').val(),
-      "tipoSolicitud":$('cmbTipoSolicitud').val()
+  //Obtener los parámetros para filtar
+  var numeroIdentidad = null;
+  var fechaSolicitud = null;
+  var codigoTipoSolicitud = null;
+
+  var inputIdentidad = document.getElementById('txtNumeroIdentidad');
+  var inputFechaSolicitud = document.getElementById('txtFechaSolicitud');
+  var inputTipoSolicitud = document.getElementById('cmbTipoSolicitud');
+
+  if(!inputIdentidad.disabled)
+  {
+    if(inputIdentidad.value !== '')
+    {
+        numeroIdentidad = $("#txtNumeroIdentidad").val();
+    }
+    else
+    {
+        alert('Ingrese un valor para el número de identidad');
+        return;
+    }
+    
+  }
+
+  if(!inputFechaSolicitud.disabled)
+  {
+      if(inputFechaSolicitud.value !== '')
+      {
+          fechaSolicitud = $("#txtFechaSolicitud").val();
+      }
+      else
+      {
+          alert('Ingrese un valor para la fecha de solicitud');
+          return;
+      }
+  }
+
+  if(!inputTipoSolicitud.disabled)
+  {
+      if(inputTipoSolicitud.value !== 'NULL')
+      {
+          codigoTipoSolicitud = $("#cmbTipoSolicitud").val();
+      }
+      else
+      {
+          alert('Seleccione una solicitud');
+          return;
+      }
+  }
+
+  if(inputIdentidad.disabled && inputFechaSolicitud.disabled && inputTipoSolicitud.disabled)
+  {
+    alert('Debe de proporcionar filtros para la búsqueda');
+    return;
+  }
+
+   var datos =  
+   {
+       accion: 2,
+       numeroIdentidad: numeroIdentidad,
+       fechaSolicitud: fechaSolicitud,
+       codigoTipoSolicitud: codigoTipoSolicitud
    };
     $.ajax({
         async: true,
@@ -24,8 +119,16 @@ $('#filtrar').click(function(event) {
         success: function(data){
             var response = JSON.parse(data);
             var options = '';
+            
+            //Clearing
+            $("#cuerpoTabla").html('');
+            
+            if(response.length <= 0)
+            {
+                $("#cuerpoTabla").html('No se encontraron solicitudes ');
+            }
 
-            for (var index = 0;index < response.length; index++) 
+            for (var index = 0;index < response.length; index++)
             {
                options += "<tr>" +
                                 "<td>" + response[index].numeroIdentidad + "</td>" +
@@ -34,14 +137,13 @@ $('#filtrar').click(function(event) {
                                 "<td>" + response[index].indiceAcademico + "</td>" +
                                 "<td>" + response[index].tipoEstudiante + "</td>" +
                                 "<td>" + response[index].tipoSolicitud + "</td>" +
-                                "<td>" + response[index].fecha + "</td>" +                    
+                                "<td>" + response[index].fecha + "</td>" +
                           "</tr>";
             }
 
             $('#cuerpoTabla').append(options);
         },
-        timeout: 4000,
-        beforeSend: antesdemandar
+        timeout: 4000
     });
 
 });
@@ -57,7 +159,7 @@ function antesdemandar(){
 function cambiarEstadoInput(codigoInput)
 {
     var htmlElement = document.getElementById(codigoInput);
-    
+
     if(htmlElement.disabled)
     {
         htmlElement.disabled = false;
@@ -65,6 +167,15 @@ function cambiarEstadoInput(codigoInput)
     else
     {
         htmlElement.disabled = true;
+        
+        if(codigoInput === 'cmbTipoSolicitud')
+        {
+            $("#" + codigoInput).val('NULL');
+        }    
+        else
+        {
+            $("#" + codigoInput).val('');
+        }
     }
 }
 
@@ -75,7 +186,7 @@ function obtenerTipoSolicitud()
     {
         accion : 1
     };
-    
+
     $.ajax
     ({
       // mandamos estos el jason a la direcion especificada.
@@ -86,13 +197,13 @@ function obtenerTipoSolicitud()
         {
             var response = JSON.parse(respuesta);
             var options = '';
-            
-            for (var index = 0;index < response.length; index++) 
+
+            for (var index = 0;index < response.length; index++)
             {
                 options += '<option value="' + response[index].codigoTipoSolicitud
                             + '">' + response[index].nombreTipoSolicitud + '</option>';
             }
-            
+
             $("#cmbTipoSolicitud").append(options);
         }
     });
@@ -103,7 +214,7 @@ function obtenerTipoSolicitud()
 
 <link href="css/datepicker.css" rel="stylesheet">
 <link href="css/prettify.css" rel="stylesheet">
-   
+
 <script src="js/prettify.js"></script>
 <script src="js/bootstrap-datepicker.js"></script>
 
@@ -124,7 +235,7 @@ function obtenerTipoSolicitud()
                 $('.datepicker').css('z-index',zIndexModal+1);
             }).on('changeDate', function(ev){
                 $('#dp1').datepicker('hide');
-            });          
+            });
 
         });
 </script>
@@ -141,46 +252,48 @@ function obtenerTipoSolicitud()
    <div id = "notificaciones"></div>
 <section onload="">
   <div class = "col-sm-12">
-    
+
+      <form>
           <div class="row">
               <div class="col-lg-3">
                   <label>
-                      <input id = "nIdentidad" required pattern="[0-9]{4}[\-][0-9]{4}[\-][0-9]{5}" placeholder="Ejemplo:0000-0000-00000" onchange="cambiarEstadoInput('txtNumeroIdentidad')" type="checkbox"> Número de identidad
-                  </label>    
+                      <input id = "nIdentidad" placeholder="Ejemplo:0000-0000-00000" onchange="cambiarEstadoInput('txtNumeroIdentidad')" type="checkbox"> Número de identidad
+                  </label>
               </div>
               <div class="col-lg-9">
-                  <input pattern="[0-9]{4}[\-][0-9]{4}[\-][0-9]{5}" placeholder="Ejemplo:0000-0000-00000" disabled="true" class="form-control" id="txtNumeroIdentidad" type="text">        
-              </div>      
+                  <input required pattern="[0-9]{4}[\-][0-9]{4}[\-][0-9]{5}" placeholder="Ejemplo:0000-0000-00000" disabled="true" class="form-control" id="txtNumeroIdentidad" type="text">
+              </div>
           </div>
           <br/>
           <div class="row">
                 <div class="col-lg-3">
                     <label>
                         <input id= "fecha" onchange="cambiarEstadoInput('txtFechaSolicitud')" type="checkbox"> Fecha de solicitud
-                    </label>    
+                    </label>
                 </div>
                 <div class="col-lg-9">
-                    <input disabled="true" data-inputmask="'alias': 'dd/mm/yyyy'" format="yyyy-mm-dd" class="form-control" id="txtFechaSolicitud" placeholder="yyyy-mm-dd" type="date">        
-                </div>      
-          </div> 
+                    <input disabled="true" data-inputmask="'alias': 'dd/mm/yyyy'" format="yyyy-mm-dd" class="form-control" id="txtFechaSolicitud" placeholder="yyyy-mm-dd" type="date">
+                </div>
+          </div>
           <br/>
           <div class="row">
               <div class="col-lg-3">
                   <label>
                       <input id = "tipoSolicitud"  onchange="cambiarEstadoInput('cmbTipoSolicitud')" type="checkbox"> Tipo de solicitud
-                  </label>    
+                  </label>
               </div>
               <div class="col-lg-9">
                 <div class="form-group">
                     <select disabled="true" class="form-control" id="cmbTipoSolicitud">
                         <option value="NULL">Seleccione una opción</option>
                     </select>
-                </div>          
-              </div>      
+                </div>
+              </div>
           </div>
           <p align="right">
-            <button id="filtrar" class="ActualizarB btn btn-primary">Filtrar</button>
+              <button type="submit" id="filtrar" class="ActualizarB btn btn-primary">Filtrar</button>
           </p>
+          </form>
 
         <!-- Creamos la tabla para mostrar las solicitudes -->
       <div class="box-body table-responsive ">
@@ -197,14 +310,12 @@ function obtenerTipoSolicitud()
               </tr>
             </thead>
             <tbody id = "cuerpoTabla">
-              
+
             </tbody>
           </table>
       </div>
     </div>
-    <button type="submit" id="CrearPDF" class="ActualizarB btn btn-primary">Generar reporte</button>
+    <button onclick="generarReporte()" id="CrearPDF" class="ActualizarB btn btn-primary">Generar reporte</button>
   </section>
   </div>
 </div>
-
-

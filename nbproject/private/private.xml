@@ -3,41 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/Applications/XAMPP/xamppfiles/htdocs/SCJRama/ccjj/eventos.php</file>
-            <file>file:/Applications/XAMPP/xamppfiles/htdocs/SCJRama/bower_components/datatables-plugins/integration/Desktop/2015-07-10/eventos.php</file>
-            <file>file:/Applications/XAMPP/xamppfiles/htdocs/SCJRama/pages/permisos/crearpdfreportedepto.php</file>
-            <file>file:/Applications/XAMPP/xamppfiles/htdocs/SCJRama/eventos.php</file>
-            <file>file:/Applications/XAMPP/xamppfiles/htdocs/SCJRama/pages/recursos_humanos/modi_GrupoComite.php</file>
-            <file>file:/Applications/XAMPP/xamppfiles/htdocs/SCJRama/pages/SecretariaAcademica/Manejo_Documentos/manejo.php</file>
-            <file>file:/Applications/XAMPP/xamppfiles/htdocs/SCJRama/bower_components/datatables-plugins/integration/Desktop/Datos/eliminarEmpleadoXGrupo.php</file>
-            <file>file:/Applications/XAMPP/xamppfiles/htdocs/SCJRama/pages/permisos/conexion.php</file>
-            <file>file:/Applications/XAMPP/xamppfiles/htdocs/SCJRama/bower_components/datatables-plugins/integration/Desktop/Datos/modi_pais.php</file>
-            <file>file:/Applications/XAMPP/xamppfiles/htdocs/SCJRama/pages/recursos_humanos/modi_Idiomas.php</file>
-            <file>file:/Applications/XAMPP/xamppfiles/htdocs/SCJRama/bower_components/datatables-plugins/integration/Desktop/Datos/insertarEmpleado.php</file>
-            <file>file:/Applications/XAMPP/xamppfiles/htdocs/SCJRama/Datos/modi_pais.php</file>
-            <file>file:/Applications/XAMPP/xamppfiles/htdocs/SCJRama/bower_components/datatables-plugins/integration/Desktop/Datos/insertarEmpleadoXgrupo.php</file>
-            <file>file:/Applications/XAMPP/xamppfiles/htdocs/SCJRama/Datos/insertarEmpleadoXgrupo.php</file>
-            <file>file:/Applications/XAMPP/xamppfiles/htdocs/SCJRama/bower_components/datatables-plugins/integration/Desktop/Datos/conexion.php</file>
-            <file>file:/Applications/XAMPP/xamppfiles/htdocs/SCJRama/Datos/cargarEmpleadoXGrupo.php</file>
-            <file>file:/Applications/XAMPP/xamppfiles/htdocs/SCJRama/pages/SecretariaAcademica/Manejo_Documentos/manejo_Documentos%20VALIDACION%20DEL%20COMBOBOX.php</file>
-            <file>file:/Applications/XAMPP/xamppfiles/htdocs/SCJRama/pages/SecretariaAcademica/RegistroEstudiantes/RegistroDeEstudiantes.php</file>
-            <file>file:/Applications/XAMPP/xamppfiles/htdocs/SCJRama/Datos/actualizarEmpleado.php</file>
-            <file>file:/Applications/XAMPP/xamppfiles/htdocs/SCJRama/pages/eventosDocente.php</file>
-            <file>file:/Applications/XAMPP/xamppfiles/htdocs/SCJRama/pages/SecretariaAcademica/Manejo_Documentos/manejo_Documentos.php</file>
-            <file>file:/Applications/XAMPP/xamppfiles/htdocs/SCJRama/Datos/BuscarEmpleado.php</file>
-            <file>file:/Applications/XAMPP/xamppfiles/htdocs/SCJRama/pages/recursos_humanos/modi_TipoEstudio.php</file>
-            <file>file:/Applications/XAMPP/xamppfiles/htdocs/SCJRama/pages/recursos_humanos/PerfilEmpleado.php</file>
-            <file>file:/Applications/XAMPP/xamppfiles/htdocs/SCJRama/pages/recursos_humanos/gestion_Grupos_comite.php</file>
-            <file>file:/Applications/XAMPP/xamppfiles/htdocs/SCJRama/conexion/config.inc.php</file>
-            <file>file:/Applications/XAMPP/xamppfiles/htdocs/SCJRama/pages/SecretariaAcademica/Manejo_Documentos/menu.js</file>
-            <file>file:/Applications/XAMPP/xamppfiles/htdocs/SCJRama/conexion/conn.php</file>
-            <file>file:/Applications/XAMPP/xamppfiles/htdocs/SCJRama/bower_components/datatables-plugins/integration/Desktop/Datos/eliminarEmpleado.php</file>
-            <file>file:/Applications/XAMPP/xamppfiles/htdocs/SCJRama/pages/recursos_humanos/gestionCargos.php</file>
-            <file>file:/Applications/XAMPP/xamppfiles/htdocs/SCJRama/pages/permisos/crearpdfsolicitudes.php</file>
-            <file>file:/Applications/XAMPP/xamppfiles/htdocs/SCJRama/bower_components/datatables-plugins/integration/Desktop/SCJRama/eventos.php</file>
-            <file>file:/Applications/XAMPP/xamppfiles/htdocs/SCJRama/Datos/conexion.php</file>
-            <file>file:/Applications/XAMPP/xamppfiles/htdocs/SCJRama/pages/eventos.php</file>
-            <file>file:/Applications/XAMPP/xamppfiles/htdocs/SCJRama/pages/SecretariaAcademica/RegistroEstudiantes/RegistrarEstudiante.php</file>
+            <file>file:/C:/xampp/htdocs/SCJ/pages/SecretariaAcademica/BusquedaAvanzada/reporte_busquedaAvanzada.php</file>
+            <file>file:/C:/xampp/htdocs/SCJ/pages/SecretariaAcademica/BusquedaAvanzada/ajax_busquedaAvanzada.php</file>
+            <file>file:/C:/xampp/htdocs/SCJ/pages/gestion_folios/folios_diarios_pdf.php</file>
+            <file>file:/C:/xampp/htdocs/SCJ/pages/SecretariaAcademica/BusquedaAvanzada/BusquedaAvanzada.php</file>
         </group>
     </open-files>
 </project-private>

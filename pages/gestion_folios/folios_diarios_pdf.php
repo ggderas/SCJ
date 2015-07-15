@@ -66,6 +66,6 @@ foreach( $rows as $row ){
 $pdf->SetFont('Arial', '', 10);
 
 
-$pdf->Output('reporte.pdf','I');
+$pdf->Output('reporte.pdf','D');
 
 ?>
