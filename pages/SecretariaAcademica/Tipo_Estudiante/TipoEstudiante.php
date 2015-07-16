@@ -1,4 +1,5 @@
 
+
 <script>
 
 $(document).ready(function(){
@@ -120,6 +121,24 @@ function modificarEstudiante(){
         });
 }
 </script>
+
+
+<script>
+function modificarEstudiante(){
+        var parametros = {
+                "Identidad" : $("#Identidad").val(),
+                "cmbxNuevoTipoE": $('#cmbxNuevoTipoE').val()
+        };
+        $.ajax({
+                data:  parametros,
+                url:   'pages/SecretariaAcademica/Tipo_Estudiante/tipoestudiantePLmod.php',
+                type:  'post',
+                success:  function (response) {
+                        $("#resultado").html(response);
+                }
+        });
+}
+</script>
 </head>
 
 <body>
@@ -136,11 +155,11 @@ function modificarEstudiante(){
                                 <div class="form-group">
                                     <label>Número de Identidad</label>
                                     <input type="text" class="form-control" autofocus name="Identidad" id="Identidad" placeholder="Ejemplo:0000-0000-00000" required pattern="[0-9]{4}[\-][0-9]{4}[\-][0-9]{5}" title="Este no es un numero de identidad valido"/>
-
                                     <p align="right">            
                                     <br><button type="button" class="btn btn-primary" href="javascript:;" onclick="realizaBusqueda()" >Verificar</button>
                                     </p>
                                 </div>
+
 
                             </div>
                             <div class="row form-group">
@@ -174,6 +193,8 @@ function modificarEstudiante(){
     </div>
 </div>
 
+=======
+>>>>>>> origin/master
                                 <div class="form-group">
                                     <label>Nombre</label>
                                     <input type="text" class="form-control" name="Nombre" id="Nombre" disabled="False"/>
@@ -199,4 +220,4 @@ function modificarEstudiante(){
     </form>
 </body>
 </html>
-
+</html>
