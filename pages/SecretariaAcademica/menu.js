@@ -26,7 +26,7 @@
 
     $("#nuevaSolicitud").click(function(event) {
       event.preventDefault();
-      $("#contenedor").load("pages/SecretariaAcademica/tipo_de_solicitud/tipo_de_solicitud.php"
+      $("#contenedor").load("pages/SecretariaAcademica/tipo_de_solicitud/tipoSolicitud.php"
                             );
       });
 
@@ -46,6 +46,23 @@
     $("#ManejoDocuementos").click(function(event) {
       event.preventDefault();
       $("#contenedor").load( "pages/SecretariaAcademica/Manejo_Documentos/manejo_Documentos.php"
+                            );
+      });
+    $("#ciudadOrigen").click(function(event) {
+      event.preventDefault();
+      $("#contenedor").load( "pages/SecretariaAcademica/Mantenimiento/ciudadOrigen/ciudadOrigen.php"
+                            );
+      });
+
+    $("#planesEstudio").click(function(event) {
+      event.preventDefault();
+      $("#contenedor").load( "pages/SecretariaAcademica/Mantenimiento/PlanesEstudio/planesEstudio.php"
+                            );
+      });
+
+    $("#mencionHonorifica").click(function(event) {
+      event.preventDefault();
+      $("#contenedor").load( "pages/SecretariaAcademica/Mantenimiento/MencionesHonorificas/MencionesHonorificas.php"
                             );
       });
 

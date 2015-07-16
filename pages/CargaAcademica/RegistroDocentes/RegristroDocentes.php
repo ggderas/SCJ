@@ -1,10 +1,12 @@
 
 <script type="text/javascript" src="js/jquery.js"></script>
 <script type="text/javascript" src="js/bootstrap-datepicker.js"></script>
+
 <script type="text/javascript">
     $(document).ready(function() {
 
-        $("form").submit(//Se realiza cuando se ejecuta un "submit" en el formulario, el "submit" se encuentra en el boton "Envíar Solicitud
+//Se realiza cuando se ejecuta un "submit" en el formulario, el "submit" se encuentra en el boton "Registrar Docente"
+        $("form").submit(
             function(e) {
                 e.preventDefault();    
                 var data1 = {
@@ -25,41 +27,43 @@
                 $.ajax({
                     async: true,
                     type: "POST",
-                    // dataType: "html",
-                    // contentType: "application/x-www-form-urlencoded",
                     url: "pages/CargaAcademica/RegistroDocentes/RegistrarDocente.php",
                     data: data1,
                     success: function(data){
+                        alert("dasd");
                         $('#notificaciones').html(data);
+                        $("#notificaciones").fadeOut(1500);
                     },
                     timeout: 4000,
                     error: problemasInsertar
                     
                 }); 
-                //La función implemente ajax para enviar la información a otros 
-                //documentos que realizaran otros procedimientos sin necesidad de refrescar toda la pagina
+                /*Esta funcion permite enviar parametros a otro archivo.php sin necesidada
+                 de recargar toda la pag*/
             });
         });
+        //Funcion para Introducir el mensaje dentro de un div que muestra la respuesta del servidor
         function llegadaGuardar(dato)
         {
-            alert("hola");
-
             $("#notificaciones").html(dato);
         }
-
+        //Esta funcion permite mostrar un mensaje antes de que el servidor acepte la solicitud
         function insertarDocente()
         {
             var x = $("#notificaciones");
             x.html('Cargando...');
         }
+        // Se levanta en caso de haber un error no contemplado
 
         function problemasInsertar()
         {
             $("#notificaciones").text('Problemas en el servidor.');
         }
+
     
 </script>
-
+<!-- Seccion en la cual agrego la funcion para poder mostrar un seleccionador de fecha 
+     para el usuario -->
 <link href="css/datepicker.css" rel="stylesheet">
 <link href="css/prettify.css" rel="stylesheet">
    
@@ -88,6 +92,8 @@
         });
 </script>
 
+<!-- Fin de la seecion de seleccionador de fecha -->
+<!-- Inicio formulario para recorger datos -->
             <body>
                   <form role="form" id="form" method="post" class="form-horizontal" action="pages/CargaAcademica/RegistroDocentes/RegistrarDocente.php">
                     <!-- .panel-heading -->
@@ -169,6 +175,8 @@
                                         </div>
                                     </div>
                                 </div>
+                                <!-- Div necesario para mostrar los posibles errores levantados por el servidor
+                                de bases ded datos -->
                                 <div id= "notificaciones"></div>
                                 <div id= "noti1" class="alert alert-info" role="alert">IMPORTANTE: Los campos marcados con el signo <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> son obligatorios.</div>
                             </br><button type="submit" id="CrearDocente" class="ActualizarB btn btn-primary">Guardar Información</button>

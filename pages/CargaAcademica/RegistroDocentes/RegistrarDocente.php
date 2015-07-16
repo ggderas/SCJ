@@ -52,16 +52,8 @@ include($maindir."conexion/config.inc.php");
          
        $stmt->execute();
        $output = $db->query("select @mensajeError")->fetch(PDO::FETCH_ASSOC);
-      //var_dump($output);
        $mensaje = $output['@mensajeError'];
-    
-
-    }catch(PDOExecption $e){
-      //$mensaje = 'error al ingresar el registro o registro actualmente existente';
-      $codMensaje = 0;
-    }
-    
-    if(is_null($mensaje)){
+       if(is_null($mensaje)){
       echo '<div class="alert alert-success alert-succes">
         <a href="#" class="close" data-dismiss="alert">&times;</a>
         <strong> Exito! </strong>'.$mensaje.'</div>';
@@ -70,4 +62,12 @@ include($maindir."conexion/config.inc.php");
         <a href="#" class="close" data-dismiss="alert">&times;</a>
         <strong> Error! </strong>'.$mensaje.'</div>';
     }
+    
+
+    }catch(PDOExecption $e){
+      //$mensaje = 'error al ingresar el registro o registro actualmente existente';
+      $codMensaje = 0;
+    }
+    
+    
  ?>

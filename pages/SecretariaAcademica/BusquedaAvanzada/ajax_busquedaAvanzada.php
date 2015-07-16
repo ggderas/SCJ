@@ -1,6 +1,5 @@
 <?php
 
-include '../../../Datos/conexion.php';
 $maindir = "../../../";
 include($maindir . "conexion/config.inc.php");
 
@@ -23,12 +22,11 @@ if (isset($_POST['accion'])) {
                     $json[$contadorIteracion] = array
                         (
                         "codigoTipoSolicitud" => $fila["codigo"],
-                        "nombreTipoSolicitud" => $fila["nombre"],
+                        "nombreTipoSolicitud" => $fila["nombre"]
                     );
 
                     $contadorIteracion++;
                 }
-
                 //Retornamos el jason con todos los elmentos tomados de la base de datos.
                 echo json_encode($json);
                 break;
@@ -74,4 +72,4 @@ if (isset($_POST['accion'])) {
             }
     }
 }
-
+?>

@@ -23,7 +23,6 @@
             $query1->execute();
             
             $output = $db->query("select @mensaje, @codMensaje")->fetch(PDO::FETCH_ASSOC);
-		//var_dump($output);
         $mensaje = $output['@mensaje'];
 		$codMensaje = $output['@codMensaje'];
 

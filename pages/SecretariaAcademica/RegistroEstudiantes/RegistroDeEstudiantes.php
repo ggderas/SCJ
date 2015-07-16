@@ -10,7 +10,8 @@ include '../../../conexion/config.inc.php'
 
   <script src="js/prettify.js"></script>
   <script src="js/bootstrap-datepicker.js"></script>
-  <!--<script>
+  
+  <script>
     if (top.location != location) {
       top.location.href = document.location.href;
     }
@@ -30,7 +31,7 @@ include '../../../conexion/config.inc.php'
       });
 
     });
-  </script>-->
+  </script>
 
   <script type="text/javascript">
     $(document).ready(function() {

@@ -6,45 +6,45 @@ $( document ).ready(function()
     obtenerTipoSolicitud();
 });
 
-$('#filtrar').click(function(event) {
-   event.preventDefault();
+// $('#filtrar').click(function(event) {
+//    event.preventDefault();
    
-   var datos =  {
-      "nIdentidad": $('#nIdentidad').val(),
-      "fecha":$('fecha').val(),
-      "tipoSolicitud":$('cmbTipoSolicitud').val()
-   };
-    $.ajax({
-        async: true,
-        type: "POST",
-        // dataType: "html",
-        // contentType: "application/x-www-form-urlencoded",
-        url: "pages/SecretariaAcademica/BusquedaAvanzada/ajax_busquedaAvanzada.php",
-        data: datos,
-        success: function(data){
-            var response = JSON.parse(data);
-            var options = '';
+//    var datos =  {
+//       "nIdentidad": $('#nIdentidad').val(),
+//       "fecha":$('fecha').val(),
+//       "tipoSolicitud":$('cmbTipoSolicitud').val()
+//    };
+//     $.ajax({
+//         async: true,
+//         type: "POST",
+//         // dataType: "html",
+//         // contentType: "application/x-www-form-urlencoded",
+//         url: "pages/SecretariaAcademica/BusquedaAvanzada/ajax_busquedaAvanzada.php",
+//         data: datos,
+//         success: function(data){
+//             var response = JSON.parse(data);
+//             var options = '';
 
-            for (var index = 0;index < response.length; index++) 
-            {
-               options += "<tr>" +
-                                "<td>" + response[index].numeroIdentidad + "</td>" +
-                                "<td>" + response[index].Nombre + "</td>" +
-                                "<td>" + response[index].numeroCuenta + "</td>" +
-                                "<td>" + response[index].indiceAcademico + "</td>" +
-                                "<td>" + response[index].tipoEstudiante + "</td>" +
-                                "<td>" + response[index].tipoSolicitud + "</td>" +
-                                "<td>" + response[index].fecha + "</td>" +                    
-                          "</tr>";
-            }
+//             for (var index = 0;index < response.length; index++) 
+//             {
+//                options += "<tr>" +
+//                                 "<td>" + response[index].numeroIdentidad + "</td>" +
+//                                 "<td>" + response[index].Nombre + "</td>" +
+//                                 "<td>" + response[index].numeroCuenta + "</td>" +
+//                                 "<td>" + response[index].indiceAcademico + "</td>" +
+//                                 "<td>" + response[index].tipoEstudiante + "</td>" +
+//                                 "<td>" + response[index].tipoSolicitud + "</td>" +
+//                                 "<td>" + response[index].fecha + "</td>" +                    
+//                           "</tr>";
+//             }
 
-            $('#cuerpoTabla').append(options);
-        },
-        timeout: 4000,
-        beforeSend: antesdemandar
-    });
+//             $('#cuerpoTabla').append(options);
+//         },
+//         timeout: 4000,
+//         beforeSend: antesdemandar
+//     });
 
-});
+// });
 
 function antesdemandar(){
   var x = $("#notificaciones");
@@ -84,6 +84,8 @@ function obtenerTipoSolicitud()
         data: parametros,
         success: function(respuesta) // En esta recibimos el json enviado como respuesta en el formulario anterior.
         {
+            var probar = respuesta.result;
+            alert(probar);
             var response = JSON.parse(respuesta);
             var options = '';
             

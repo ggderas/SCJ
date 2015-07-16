@@ -20,6 +20,4 @@ WHILE($linea=  mysql_fetch_array($result))
 }
 
 echo json_encode($json);	    
-
-
 ?>

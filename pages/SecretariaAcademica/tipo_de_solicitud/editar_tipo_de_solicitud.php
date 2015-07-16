@@ -12,13 +12,17 @@ if(!isset( $_SESSION['user_id'] ))
   header('Location: '.$maindir.'login/logout.php?code=100');
   exit();
 }
+
   try
   {
-	  $nombre = $_POST['nombreSolicitud'];
-    
-     $stmt = $db->prepare("CALL SP_REGISTRAR_TIPO_SOLICITUD(?,@mensajeError)");
+    $codigo = $_POST['codSolicitud'];
+    $nombre = $_POST['nomSolicitud'];
+    $stmt = $db->prepare("CALL SP_MODIFICAR_SOLICITUDES(?,?,@mensajeError)");
 	     //Introduccion de parametros
-      $stmt->bindParam(1, $nombre, PDO::PARAM_STR); 
+    $stmt->bindParam(1, $codigo, PDO::PARAM_STR);
+    $stmt->bindParam(2, $nombre, PDO::PARAM_STR); 
+
+    //echo $codigo . $nombre;
        
      $stmt->execute();
      $output = $db->query("select @mensajeError")->fetch(PDO::FETCH_ASSOC);
@@ -27,7 +31,7 @@ if(!isset( $_SESSION['user_id'] ))
      $codMensaje = 1;
       
     }catch(PDOExecption $e){
-      $mensaje = 'Error al ingresar el registro o registro actualmente existente.';
+      $mensaje = 'Error al ingresar el registro o registro actualmente existente' . $e;
       $codMensaje = 0;
     }
     

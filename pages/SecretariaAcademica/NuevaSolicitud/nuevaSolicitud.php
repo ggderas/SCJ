@@ -287,91 +287,81 @@
              
              
 </script>
-
-
-
-<html lang="es">
-    <head>
-        <title>Gestión de Solicitudes</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width-device-width, initial-scale=1">
-    </head>
-    <body>
-        <div  id="contenedor2">
+<div  id="contenedor2"></div>         
+<div class="panel panel-default">
+    <div class="panel-heading"><span class="glyphicon glyphicon-file" aria-hidden="true"></span> Solicitud de Estudiante</div>
+    <br>
+    <br>
+    <div class="panel-body" align = "center">
+        <div class="row">
+            <div class="col-lg-12">
+                <form class="form-horizontal" role="form" id="form" name="form">
+                    <div class="row form-group">                                                                                                                     
+                        <label class=" col-sm-2 control-label" >Periodo</label>
+                        <div class="col-sm-8">                            
+                            <select class="form-control" id="periodo" name="periodo" >
+                                <option value="NULL">Seleccione una opción</option>
+                            </select>
+                        </div>                        
+                    </div>
+                     
+                    <div class="row form-group" >                    
+                        <label class=" col-sm-2 control-label"id="2" >N° identidad</label>                       
+                        <div class="col-sm-8">                            
+                            <input type="text" class="form-control" id="identidad" name="identidad" placeholder="Ejmpl: 0000-0000-00000"required>                                
+                        </div>                                                                                                                         
+                    </div>
             
-        </div>         
-            <div class="panel panel-primary">
-                <div class="panel-heading"><h2>Solicitud de Estudiante</h2></div>
-                
-                <div class="panel-body ">
-                    <form class="form-horizontal" role="form" id="form" name="form">
-                        
-                        <div class="row form-group">                                                                                                                     
-                            <label class=" col-sm-2 control-label" >Periodo</label>
-                            <div class="col-sm-6">                            
-                                <select class="form-control" id="periodo" name="periodo" >
-                                    <option value="NULL">Seleccione una opción</option>
-                                </select>
-                            </div>                        
+                    <div class="row form-group">
+                        <label class=" col-sm-2 control-label" >Nombre</label>
+                        <div class="col-sm-8">                            
+                            <input type="text" class="form-control" id="nombre" name="nombre" required disabled="">                                
                         </div>
-                         
-                        <div class="row form-group" >                    
-                            <label class=" col-sm-2 control-label"id="2" >N° identidad</label>                       
-                            <div class="col-sm-6">                            
-                                <input type="text" class="form-control" id="identidad" name="identidad" placeholder="Ejmpl: 0000-0000-00000"required>                                
-                            </div>                                                                                                                         
+                    </div>
+            
+                    <div class="row form-group">
+                        <label class=" col-sm-2 control-label" >Tipo estudiante</label>
+                        <div class="col-sm-8">                            
+                            <input type="text" class="form-control" id="tipoEstudiante" name="tipoEstudiante" required disabled="">                                
                         </div>
-                
-                        <div class="row form-group">
-                            <label class=" col-sm-2 control-label" >Nombre</label>
-                            <div class="col-sm-6">                            
-                                <input type="text" class="form-control" id="nombre" name="nombre" required disabled="">                                
-                            </div>
+                    </div>                
+                     
+                    <div class="row form-group">
+                        <label class=" col-sm-2 control-label" >Solicitud</label>
+                        <div class="col-sm-8">                            
+                            <select class="form-control" id="selectTiposSolicitud" name="selectTiposSolicitud">
+                                <option value="NULL">Seleccione una opción</option>
+                            </select>
                         </div>
-                
-                        <div class="row form-group">
-                            <label class=" col-sm-2 control-label" >Tipo estudiante</label>
-                            <div class="col-sm-6">                            
-                                <input type="text" class="form-control" id="tipoEstudiante" name="tipoEstudiante" required disabled="">                                
-                            </div>
-                        </div>                
-                         
-                        <div class="row form-group">
-                            <label class=" col-sm-2 control-label" >Solicitud</label>
-                            <div class="col-sm-6">                            
-                                <select class="form-control" id="selectTiposSolicitud" name="selectTiposSolicitud">
-                                    <option value="NULL">Seleccione una opción</option>
-                                </select>
-                            </div>
+                    </div>
+                   
+                    <div class="row">
+                        <label class="control-label col-sm-2"></label>
+                        <div class="checkbox col-sm-4">
+                            <label>
+                                <input type="checkbox" id="himno" name="himno" value="0"><strong>Solicitud aplica para himno</strong>
+                            </label>                                
+                        </div>                            
+                    </div>
+                    <br>
+                    
+                    <div class="row">                            
+                        <label class="control-label col-sm-2" id="lfecha" name="lfecha" hidden>Fecha</label>
+                        <div class="col-sm-3">
+                            <input type="date" name="fecha" id="fecha" hidden><span class="">
                         </div>
-                       
-                        <div class="row">
-                            <label class="control-label col-sm-2"></label>
-                            <div class="checkbox col-sm-4">
-                                <label>
-                                    <input type="checkbox" id="himno" name="himno" value="0"><strong>Solicitud aplica para himno</strong>
-                                </label>                                
-                            </div>                            
-                        </div>
-                        <br>
-                        
-                        <div class="row">                            
-                            <label class="control-label col-sm-2" id="lfecha" name="lfecha" hidden>Fecha</label>
-                            <div class="col-sm-3">
-                                <input type="date" name="fecha" id="fecha" hidden><span class="">
-                            </div>
-                        </div>
-                        
-                        <div class="row">
-                            <label class="control-label col-sm-2"></label>
-                            <div class="col-sm-6">
-                                <button class="btn btn-primary btn-primary col-sm-offset-10" ><span class=" glyphicon glyphicon-floppy-disk"></span>Guardar</button>           
-                            </div>                            
-                        </div>
-                        
-                                                                                        
-                    </form>
-                </div>                                    
-            </div>                        
-    </body>
-</html>
+                    </div>
+                    
+                    <div class="row">
+                        <label class="control-label col-sm-2"></label>
+                        <div class="col-sm-8">
+                            <p aling ="right">
+                                <button class="btn btn-primary btn-primary col-sm-offset-10" ><span class=" glyphicon glyphicon-floppy-disk"></span> Guardar</button> 
+                            </p>          
+                        </div>                            
+                    </div>                                                            
+                </form>
+            </div>
+        </div>
+    </div>                                    
+</div>                        
