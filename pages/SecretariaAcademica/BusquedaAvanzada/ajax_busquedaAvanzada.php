@@ -1,6 +1,8 @@
 <?php
 
+
 $maindir = "../../../";
+include $maindir . 'Datos/conexion.php';
 include($maindir . "conexion/config.inc.php");
 
 if (isset($_POST['accion'])) {
@@ -18,58 +20,85 @@ if (isset($_POST['accion'])) {
 
                 while ($fila = mysql_fetch_array($result)) {
                     //El objeto json es un array por lo que hacemos un recorrido y le ingresamos los valores
-                    //solicitados. 
+                    //solicitados.
                     $json[$contadorIteracion] = array
                         (
                         "codigoTipoSolicitud" => $fila["codigo"],
-                        "nombreTipoSolicitud" => $fila["nombre"]
+                        "nombreTipoSolicitud" => $fila["nombre"],
                     );
 
                     $contadorIteracion++;
                 }
+
                 //Retornamos el jason con todos los elmentos tomados de la base de datos.
                 echo json_encode($json);
                 break;
             }
-        case 2: {
-                try {
-                    $identi = $_POST['nIdentidad'];
-                    $pfecha = $_POST['fecha'];
-                    $tipoSolicitud = $_POST['tipoSolicitud'];
+        case 2: 
+        {
+                    $identi = $_POST['numeroIdentidad'];
+                    $pfecha = $_POST['fechaSolicitud'];
+                    $tipoSolicitud = $_POST['codigoTipoSolicitud'];
+                    
+                    $_SESSION["N_IDENTIDAD"] = $identi;
+                    $_SESSION["FECHA"] = $pfecha;
+                    $_SESSION["TIPO_SOLICITUD"] = $tipoSolicitud;
+                    
+                    if($identi == NULL)
+                    {
+                        $identi = 'NULL';
+                    }
+                    else
+                    {
+                        $identi = "'" . $identi . "'";
+                    }
+                    
+                    if($pfecha == NULL)
+                    {
+                        $pfecha = 'NULL';
+                    }
+                    else
+                    {
+                        $pfecha = "'" . $pfecha . "'";
+                    }                    
+                    
+                    if($tipoSolicitud == NULL)
+                    {
+                        $tipoSolicitud = 'NULL';
+                    }                     
 
-                    $stmt = $db->prepare("CALL SP_BUESQUEDA_SECRETARIA(?,?,?,@mensajeError)");
+                    $query = 'CALL SP_BUSQUEDA_SECRETARIA('
+                             . $identi . ","
+                             . $pfecha . ","
+                             . $tipoSolicitud . ", @mensajeError)";
+                    
+                    $result = mysql_query($query);
 
-                    // Parametros de la consulta
-                    $stmt->bindParam(1, $identi, PDO::PARAM_STR);
-                    $stmt->bindParam(2, $pfecha, PDO::PARAM_STR);
-                    $stmt->bindParam(3, $tipoSolicitud, PDO::PARAM_STR);
-                    $stmt->execute();
-                    $output = $db->query("select @mensajeError")->fetch(PDO::FETCH_ASSOC);
-                    $mensaje = $output['@mensajeError'];
-                } catch (PDOExecption $e) {
-                    //$mensaje = 'error al ingresar el registro o registro actualmente existente';
-                    $codMensaje = 0;
-                }
+                    $json = array();
+                    $contadorIteracion = 0;
 
-                if (is_null($mensaje)) {
 
-                    $jason = array();
-                    $contador = 0;
+                    while ($fila = mysql_fetch_array($result)) 
+                    {
+                        //El objeto json es un array por lo que hacemos un recorrido y le ingresamos los valores
+                        //solicitados.
+                        $json[$contadorIteracion] = array
+                        (
+                            "numeroIdentidad" => $fila["NUMERO_IDENTIDAD"],
+                            "Nombre" => $fila["NOMBRE"],
+                            "numeroCuenta" => $fila["NUMERO_CUENTA"],
+                            "indiceAcademico" => $fila["INDICE_ACADEMICO"],
+                            "tipoEstudiante" => $fila["DESCRIPCION_TIPO_ESTUDIANTE"],
+                            "tipoSolicitud" => $fila["NOMBRE_TIPO_SOLICITUD"],
+                            "fecha" => $fila["FECHA_SOLICITUD"]
+                        );
 
-                    $json[$contador] = array
-                    (
-                    "numeroIdentidad" ==> $fila[""];
-                    "Nombre" ==> $fila[""];
-                    "numeroCuenta" ==> $fila[""];
-                    "indiceAcademico" ==> $fila[""];
-                    "tipoEstudiante" ==> $fila[""];
-                    "tipoSolicitud" ==> $fila[""];
-                    "fecha" ==> $fila[""];
-                    echo json_encode($jason);
-                    )
-                }
-                break;
+                        $contadorIteracion++;
+                    }
+                    
+                    echo json_encode($json);
+                    break;
             }
+            
     }
 }
-?>

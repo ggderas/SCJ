@@ -66,6 +66,11 @@
       $("#contenedor").load( "pages/SecretariaAcademica/Mantenimiento/MencionesHonorificas/MencionesHonorificas.php"
                             );
       });
-
+    $("#Orientaciones").click(function(event) {
+      event.preventDefault();
+      $("#contenedor").load( "pages/SecretariaAcademica/Mantenimiento/Orientaciones/orientaciones.php"
+                            );
+      });
+    
 });
 

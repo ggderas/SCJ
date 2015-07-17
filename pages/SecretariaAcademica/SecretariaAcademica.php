@@ -81,7 +81,8 @@ if(!isset( $_SESSION['user_id'] ))
                           <!-- Ingreso de sub meno de la seccion de Mantenimiento -->
                             <li><a id="ciudadOrigen" href="#"><i class="glyphicon glyphicon-globe"></i> Ciudades de origen</a></li>
                             <li><a id="planesEstudio" href="#"><i class="glyphicon glyphicon-book"></i> Planes de estudio</a></li> 
-                            <li><a id="mencionHonorifica" href="#"><i class="glyphicon glyphicon-star"></i> Menciones Honorificas</a></li> 
+                            <li><a id="mencionHonorifica" href="#"><i class="glyphicon glyphicon-star"></i> Menciones Honorificas</a></li>
+                            <li><a id="Orientaciones" href="#"><i class="glyphicon glyphicon-education"></i> Menciones Honorificas</a></li>  
                         </ul>
                     </li>
                 </ul>
