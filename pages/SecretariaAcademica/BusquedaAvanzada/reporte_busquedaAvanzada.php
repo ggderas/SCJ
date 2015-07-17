@@ -1,7 +1,5 @@
 <?php
 
-
-
 $maindir = '../../../';
 include $maindir . 'fpdf/fpdf.php';
 include $maindir . 'Datos/conexion.php';
