@@ -1,16 +1,5 @@
 <?php 
-
-	$mkdir = "../../../../";
-	include($mkdir."conexion/config.inc.php");
-	
-	$Nid = NULL;
-	//Se recupera valor enviado
-	if(isset($_POST['Identidad']))
-	{
-		$Nid = $_POST['Identidad'];
-	}
-
-    //Replace the below connection parameters to fit your environment
+    //Datos necesarios para la conexion
     $host = 'localhost'; 
     $dbname = 'ccjj';
     $user = 'root';
@@ -26,22 +15,6 @@
         $Nid = $_POST['Identidad'];
     }
 
-
-    //Replace the below connection parameters to fit your environment
-    $host = 'localhost'; 
-    $dbname = 'ccjj';
-    $user = 'root';
-    $pass = '';
-
-    //conexion a la base de datos
-    $connection = mysqli_connect($host, $user, $pass, $dbname);
-    
-    $Message= "Numero de indentidad incorrecto";
-    //Se recupera valor enviado
-    if(isset($_POST['Identidad']))
-    {
-        $Nid = $_POST['Identidad'];
-    }
     $sentencia =  $connection->stmt_init();
     if ($sentencia->prepare("CALL SP_OBTENER_INFORMACION_ESTUDIANTE(?, @pcMensajeError)")) 
     {

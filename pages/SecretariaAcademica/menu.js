@@ -11,6 +11,7 @@
           
       $("#div_contenido").load("pages/SecretariaAcademica/SecrerariaAcademica.php");
       });
+    
     $("#RegistroEstudiante").click(function(event) {
 
       event.preventDefault();

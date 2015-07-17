@@ -6,13 +6,9 @@
 <head>
   <meta charset="UTF-8">
   <title>Tipo de Solicitud</title>
-  <!-- NOTA: Codigo Inecesario by: Claudio Paz --> 
-  <!-- <link rel="stylesheet" type="text/css" href="../../media/css/jquery.dataTables.css">
   <link type="text/css" rel="stylesheet" href="./media/css/jquery.dataTables_themeroller.css" />
   <script type="text/javascript" language="javascript" src="../../media/js/jquery.js"></script>
-  <script type="text/javascript" language="javascript" src="../../media/js/jquery.dataTables.js"></script> -->
-  
-  <script type="text/javascript">
+   <script type="text/javascript">
     $(document).ready(function(e) {
       $("form").submit(//Se realiza cuando se ejecuta un "submit" en el formulario, el "submit" se encuentra en el boton "Envíar Solicitud
       function(e) {
@@ -105,14 +101,16 @@ function actualizarTipoSolicitud()
 }
 </script>
  
-</head> 
+</head>
+
+<body>
+  <div class="col-lg-12">
+    <h1 class="page-header">Tipo de Solicitudes</h1>
+  </div>  
   <div class="panel panel-default">
-    <div class="col-lg-12">
-      <h1 class="page-header">Tipo de Solicitudes</h1>
-    </div>
     <div class="panel-body"> 
       <div class="conteiner">
-        <div class="col-md-12">
+        <div class="col-md-12" class="vertical-line">
           <form >
             <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Agregar Nuevo Tipo de solicitud</button>   
             <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
@@ -123,10 +121,10 @@ function actualizarTipoSolicitud()
                     <h4 class="modal-title" id="solicitud">Agregar Nuevo Tipo de Solicitud</h4>
                   </div>
                   <div class="modal-body">
-                    <form id = "form" name="form" method="POST" action="pages/SecretariaAcademica/tipo_de_solicitud/tipo_de_solicitud.php">
+                    <form id = "form" name="form" method="POST" action="pages/SecretariaAcademica/tipo_de_solicitud/registrar_tipo_de_solicitud.php">
                       <div class="form-group">
                         <label for="message-text" class="control-label">Nombre:</label>
-                        <input type="text" class="form-control" id="nombreSolicitud"  placeholder="Nombre" required>
+                        <input type="text" class="form-control" id="nomSolicitud"  placeholder="Nombre" required>
                       </div>
                       <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
@@ -229,5 +227,6 @@ function actualizarTipoSolicitud()
       </div>
     </div>
   </div>
+</body>
 </html>
 
