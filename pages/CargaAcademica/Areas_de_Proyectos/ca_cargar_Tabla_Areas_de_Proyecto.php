@@ -3,12 +3,15 @@
 ?>    
 
 <?php
+	/*Se llama a procedimiento almacenado*/
 	$resultado= mysql_query("CALL SP_OBTENER_AREAS(@pcMensajeError)", $enlace);
+	/*Se obtienen y almacenan los valores devueltos*/
 	while ($row = mysql_fetch_array($resultado)) 
 	{
 	  $codigo = $row['codigo'];
 	  $nom=$row['nombre'];
 	?>
+	<!--Se inserta en la tabla-columna los valores obtenidos-->
 	<tr height="50px">
 	  <td id="codigo">
 	    <?php echo $codigo ?>

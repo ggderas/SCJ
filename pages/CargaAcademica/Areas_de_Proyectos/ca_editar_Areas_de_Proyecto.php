@@ -11,26 +11,27 @@ if(!isset( $_SESSION['user_id'] ))
 
   try
   {
+    //Se reciben valores enviados por el ajax
     $codigo = $_POST['codAreaProyecto'];
     $nombre = $_POST['nomAreaProyecto'];
+    //Se llama al procedimiento almacenado
     $stmt = $db->prepare("CALL SP_MODIFICAR_AREAS(?,?,@mensajeError)");
-	     //Introduccion de parametros
+	  //Introduccion de parametros
     $stmt->bindParam(1, $codigo, PDO::PARAM_STR);
     $stmt->bindParam(2, $nombre, PDO::PARAM_STR); 
-
-    //echo $codigo . $nombre;
-       
-     $stmt->execute();
-     $output = $db->query("select @mensajeError")->fetch(PDO::FETCH_ASSOC);
-     //var_dump($output);
-     $mensaje = $output['@mensajeError'];
-     $codMensaje = 1;
+    //Se ejecuta la consulta
+    $stmt->execute();
+    //Se recibe un mensaje de error, que se generó al ejecutar la consulta
+    $output = $db->query("select @mensajeError")->fetch(PDO::FETCH_ASSOC);
+    //Se obtiene mensaje
+    $mensaje = $output['@mensajeError'];
+    $codMensaje = 1;
       
     }catch(PDOExecption $e){
       $mensaje = 'Error al ingresar el registro o registro actualmente existente';
       $codMensaje = 0;
     }
-    
+    //Se envia resultado
     if($codMensaje == 1){
       echo '<div class="alert alert-info alert-succes">
         <a href="#" class="close" data-dismiss="alert">&times;</a>

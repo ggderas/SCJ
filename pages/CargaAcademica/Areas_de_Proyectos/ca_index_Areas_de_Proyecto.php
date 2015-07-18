@@ -12,131 +12,146 @@
     <script type="text/javascript" language="javascript" src="../../media/js/jquery.js"></script>
     <script type="text/javascript" language="javascript" src="../../media/js/jquery.dataTables.js"></script>
 
+    <!--Funcion que permite insertar un area en la base de datos, 
+    se genera al presionar el boton guardar del modal agregar-->
     <script type="text/javascript">
       $(document).ready(function(e) {
         $("form").submit(//Se realiza cuando se ejecuta un "submit" en el formulario, el "submit" se encuentra en el boton "Envíar Solicitud
         function(e) {
             e.preventDefault();    
+            /*Se envian los parametros que necesita el procedimiento almacenado*/
             var data1 = {
                   "nombreAreaProyecto":$('#nombreAreaProyecto').val()
                 };
-
+            /*Se carga contenido ca_registrar_Areas_de_Proyecto*/
             $.ajax({
                 async: true,
                 type: "POST",
                 url: "pages/CargaAcademica/Areas_de_Proyectos/ca_registrar_Areas_de_Proyecto.php",
                 data: data1,
                 success: function(data){
-
-                    $('#notificaciones').html(data);
-
-                    setTimeout(function() {
-                    $(".content").fadeIn(1500);
-                    },500);
-
-                    setTimeout(function() {
-                    $(".content").fadeOut(1500);
-                    },500);
-
-                    $('#exampleModal').modal('hide');
-                    $('#tbody').load("pages/CargaAcademica/Areas_de_Proyectos/ca_cargar_Tabla_Areas_de_Proyecto.php");
+                  /*Se recibe valor devuelto*/
+                  $('#notificaciones').html(data);
+                  /*Funcion que permita mostrar un alerta en cierto tiempo*/
+                  setTimeout(function() {
+                  $(".content").fadeIn(1500);
+                  },500);
+                  /*Funcion que permita ocultar un alerta en cierto tiempo*/
+                  setTimeout(function() {
+                  $(".content").fadeOut(1500);
+                  },500);
+                  /*Se esconde el modal agregar area*/
+                  $('#exampleModal').modal('hide');
+                  /*Se recarga contenido de la tabla*/
+                  $('#tbody').load("pages/CargaAcademica/Areas_de_Proyectos/ca_cargar_Tabla_Areas_de_Proyecto.php");
+                  $('#nombreAreaProyecto').val('');
                 },
                 timeout: 4000
             }); 
         });
       });
-  </script>
+    </script>
 
-  <script type="text/javascript">
-    $(document).ready(function() {
-    $('#tblAreasProyecto').dataTable(); // example es el id de la tabla
-    });
-  </script>
+    <!--Funcion que permite agregar un estilo Datatable-->
+    <script type="text/javascript">
+      $(document).ready(function() {
+      $('#tblAreasProyecto').dataTable();
+      });
+    </script>
 
-  <script type="text/javascript">
+    <!--Funcion que se sucede al dar click sobre el boton editar del Datatable-->
+    <script type="text/javascript">
+      $(document).on("click",".editar",function () {
+        /*Se extrae valor de codigo y nombre, del datatable*/
+        codigoAP = $(this).parents("tr").find("td").eq(0).text().trim();
+        nombreAP = $(this).parents("tr").find("td").eq(1).text().trim();
+        /*Se asigna valor extraido a sus respectivos input, en el modal editar*/
+        $("#codAreaProyecto").val(codigoAP);
+        $("#nomAreaProyecto").val(nombreAP); 
+        /*Se abre el modal editar*/               
+        $("#editarModal").modal('show');
+          });
+    </script>
 
-    $(document).on("click",".editar",function () {
-      codigoAP = $(this).parents("tr").find("td").eq(0).text().trim();
-      nombreAP = $(this).parents("tr").find("td").eq(1).text().trim();
+    <!--Funcion que permite modificar un area, se genera al presionar el boton guardar del modal editar-->
+    <script type="text/javascript">
+      function actualizarAreaProyecto()
+      {
+        /*Se envian los parametros que necesita el procedimiento almacenado*/
+        var data2 = {
+        "codAreaProyecto":$('#codAreaProyecto').val(),
+        "nomAreaProyecto":$('#nomAreaProyecto').val()
+        };
+        /*Se carga contenido ca_editar_Areas_de_Proyecto*/
+        $.ajax({
+          async: true,
+          type: "POST",
+          url: "pages/CargaAcademica/Areas_de_Proyectos/ca_editar_Areas_de_Proyecto.php",
+          data: data2,
+          success: function(data){
+              /*Se recibe valor devuelto*/
+              $('#notificaciones').html(data);
+              /*Funcion que permita mostrar un alerta en cierto tiempo*/
+              setTimeout(function() {
+              $(".content").fadeIn(1500);
+              },500);
+              /*Funcion que permita ocultar un alerta en cierto tiempo*/
+              setTimeout(function() {
+              $(".content").fadeOut(1500);
+              },1500);
+              /*Se esconde el modal agregar area*/
+              $('#editarModal').modal('hide');
+              /*Se recarga contenido de la tabla*/
+              $('#tbody').load("pages/CargaAcademica/Areas_de_Proyectos/ca_cargar_Tabla_Areas_de_Proyecto.php");
+            },
+            timeout: 4000
+          }); 
+      }
+    </script>
 
-      $("#codAreaProyecto").val(codigoAP);
-      $("#nomAreaProyecto").val(nombreAP);                
-      $("#editarModal").modal('show');
-        });
-  </script>
 
-  <script type="text/javascript">
-    function actualizarAreaProyecto()
-    {
-      var data2 = {
-      "codAreaProyecto":$('#codAreaProyecto').val(),
-      "nomAreaProyecto":$('#nomAreaProyecto').val()
-      };
-
-      $.ajax({
-        async: true,
-        type: "POST",
-        url: "pages/CargaAcademica/Areas_de_Proyectos/ca_editar_Areas_de_Proyecto.php",
-        data: data2,
-        success: function(data){
-
+    <!--Funcion que permite modificar un area, se genera al presionar el boton guardar del modal editar-->
+    <script type="text/javascript">
+      $(document).on("click",".elimina",function () {
+        /*Muestra un mensaje, con el contenido espesificado*/
+        var respuesta = confirm("¿Esta seguro de que desea eliminar el registro seleccionado?");
+        if (respuesta)
+        {
+          /*Se obtiene el valor selccionado del datatable*/
+          codigoAP = $(this).parents("tr").find("td").eq(0).text().trim();
+          /*Se envian los parametros que necesita el procedimiento almacenado*/
+          var data3 = 
+          {
+            "codAreaProyecto":codigoAP
+          };
+          /*Se carga contenido ca_editar_Areas_de_Proyecto*/
+          $.ajax({
+          async: true,
+          type: "POST",
+          url: "pages/CargaAcademica/Areas_de_Proyectos/Eliminar_area.php",
+          data: data3,
+          success: function(data){
+            /*Se recibe valor devuelto*/
             $('#notificaciones').html(data);
-
+            /*Funcion que permita mostrar un alerta en cierto tiempo*/
             setTimeout(function() {
             $(".content").fadeIn(1500);
             },500);
-
+            /*Se esconde el modal agregar area*/
             setTimeout(function() {
-            $(".content").fadeOut(1500);
-            },1500);
-
-            $('#editarModal').modal('hide');
-
-            $('#tbody').load("pages/CargaAcademica/Areas_de_Proyectos/ca_cargar_Tabla_Areas_de_Proyecto.php");
-          },
-          timeout: 4000
-        }); 
-    }
-  </script>
+              $(".content").fadeOut(1500);
+              },1500);
+              /*Se esconde el modal agregar area*/
+              $('#editarModal').modal('hide');
+              /*Se recarga contenido de la tabla*/
+              $('#tbody').load("pages/CargaAcademica/Areas_de_Proyectos/ca_cargar_Tabla_Areas_de_Proyecto.php");
+            },
+            timeout: 4000
+          }); 
+        } 
+      });
+    </script>
   </head>
-
-  <script type="text/javascript">
-    $(document).on("click",".elimina",function () {
-      var respuesta = confirm("¿Esta seguro de que desea eliminar el registro seleccionado?");
-      if (respuesta)
-      {
-        codigoAP = $(this).parents("tr").find("td").eq(0).text().trim();
-        var data3 = 
-        {
-          "codAreaProyecto":codigoAP
-        };
-
-        $.ajax({
-        async: true,
-        type: "POST",
-        url: "pages/CargaAcademica/Areas_de_Proyectos/Eliminar_area.php",
-        data: data3,
-        success: function(data){
-
-          $('#notificaciones').html(data);
-
-          setTimeout(function() {
-          $(".content").fadeIn(1500);
-          },500);
-
-          setTimeout(function() {
-            $(".content").fadeOut(1500);
-            },1500);
-
-            $('#editarModal').modal('hide');
-
-            $('#tbody').load("pages/CargaAcademica/Areas_de_Proyectos/ca_cargar_Tabla_Areas_de_Proyecto.php");
-          },
-          timeout: 4000
-        }); 
-      } 
-    });
-  </script>
 
   <body> 
       <div class="row"> 

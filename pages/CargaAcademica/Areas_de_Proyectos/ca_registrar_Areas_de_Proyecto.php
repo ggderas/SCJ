@@ -10,23 +10,25 @@ if(!isset( $_SESSION['user_id'] ))
 }
   try
   {
-	  $nombre = $_POST['nombreAreaProyecto'];
-    
+     //Se reciben valores enviados por el ajax
+	   $nombre = $_POST['nombreAreaProyecto'];
+     //Se llama al procedimiento almacenado
      $stmt = $db->prepare("CALL SP_INSERTAR_AREAS(?,@mensajeError)");
-	     //Introduccion de parametros
-      $stmt->bindParam(1, $nombre, PDO::PARAM_STR); 
-       
+	   //Introduccion de parametros
+     $stmt->bindParam(1, $nombre, PDO::PARAM_STR); 
+     //Se ejecuta la consulta 
      $stmt->execute();
+     //Se recibe un mensaje de error, que se generó al ejecutar la consulta
      $output = $db->query("select @mensajeError")->fetch(PDO::FETCH_ASSOC);
-     //var_dump($output);
+     //Se obtiene mensaje
      $mensaje = $output['@mensajeError'];
      $codMensaje = 1;
-      
+
     }catch(PDOExecption $e){
       $mensaje = 'Error al ingresar el registro o registro actualmente existente.';
       $codMensaje = 0;
     }
-    
+    //Se envia resultado
     if($codMensaje == 1){
       echo '<div class="alert alert-success alert-succes">
         <a href="#" class="close" data-dismiss="alert">&times;</a>
